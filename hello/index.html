@@ -1,30 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- 每3秒钟刷新一次 -->
-        <meta http-equiv="refresh" content="3" >
-        <meta charset="utf-8">
-        <title> web-learning </title>
-    </head>
-    <body>
-        <!-- Block & inline  -->
-        <em>H</em><em>e</em><strong>llo</strong>
-        <p>H</p><p>e</p><p>l</p><p>l</p><p>o</p>
-        <!-- Empty Element- -->
-        <img src="timg.jpg" >
-        <!-- Attribute -->
-        <p><a href="http://www.helloworld.org/" title="用不同语言实现hello world的网站" target="_blank">Hello</a></p>
-        <!-- Text attributes -->
-        <!-- Text size -->
-        <p><span style="font-size: 32px;margin:21px 0;">Hello</span><p>
-        <!-- Text color -->
-        <p><span style="font-size: 24px;margin:21px 0;color: red;">Hello</span><p>
-        <!-- Text background color -->
-        <p><span style="font-size: 14px;margin:221px;color: #090;line-height: 4.2;background: #990">Hello</span><p>
-        <!-- Text margin -->
-        <p style="background: red"><span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;line-height: 20.2;background: #990">Hello</span><p>
-        <!-- Text font family -->
-        <p><span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;font-family: Times New Roman">Hello</span><p>
-    </body>
-</html>
 
+<head>
+    <!-- 每3秒钟刷新一次 -->
+    <meta http-equiv="refresh" content="3">
+    <meta charset="utf-8">
+    <title> web-learning </title>
+</head>
+
+<body>
+    <!-- Block & inline  -->
+    <h2>块 & 内联</h2>
+    <div style="background: lightgray">
+        <em>H</em><em>e</em><strong>llo</strong>
+        <p>H</p>
+        <p>e</p>
+        <p>l</p>
+        <p>l</p>
+        <p>o</p>
+    </div>
+    <!-- Empty Element- -->
+    <h2>空元素</h2>
+    <div>
+        <img src="timg.jpg">
+    </div>
+    <!-- Attribute -->
+    <h2>属性</h2>
+    <div style="background: lightgray">
+        <p>
+            <a href="http://www.helloworld.org/" title="用不同语言实现hello world的网站" target="_blank">Hello</a>
+        </p>
+    </div>
+    <!-- Text attributes -->
+    <h2>文本属性</h2>
+    <!-- Text size -->
+    <h3>size</h3>
+    <p style="background: lightgray">
+        <span style="font-size: 32px;margin:21px 0;">Hello</span>
+    </p>
+    <!-- Text color -->
+    <h3>color</h3>
+    <p style="background: lightgray">
+        <span style="font-size: 24px;margin:21px 0;color: red;">Hello</span>
+    </p>
+    <!-- Text background color -->
+    <h3>background color</h3>
+    <p style="background: lightgray">
+        <span style="font-size: 14px;margin:221px;color: #090;line-height: 4.2;background: #990">Hello</span>
+    </p>
+    <!-- Text margin -->
+    <h3>margin</h3>
+    <p style="background: red">
+        <span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;line-height: 20.2;background: #990">Hello</span>
+    </p>
+    <!-- Text font family -->
+    <h3>font family</h3>
+    <p>
+        <h4>Times New Roman</h4>
+        <div>
+            <span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;font-family: Times New Roman">Hello</span>
+        </div>
+        <h4>黑体</h4>
+        <div>
+            <span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;font-family: 黑体">Hello</span>
+        </div>
+        <h4>Monaco</h4>
+        <div>
+            <span style="font-size:32px;margin:10px 100px 10px 200px;color: #090;font-family: Monaco">Hello</span>
+        </div>
+    </p>
+</body>
+
+</html>
