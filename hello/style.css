@@ -1,3 +1,7 @@
+html{
+    font-size: 10px;/* 10个像素 */
+    font-family: Open Sans, sans-serif
+}
 p{
     color: red;
     background: lightgray;
@@ -10,4 +14,8 @@ p{
     margin:10px 100px 10px 200px;
     color: #090;
     font-family: Open Sans, sans-serif
+}
+li {
+    font-size: 24px;
+    text-align: center;
 }
