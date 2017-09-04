@@ -5,3 +5,9 @@ p{
 #my-text-margin-id{
     background: red;
 }
+.font-demo{
+    font-size:32px;
+    margin:10px 100px 10px 200px;
+    color: #090;
+    font-family: Open Sans, sans-serif
+}
