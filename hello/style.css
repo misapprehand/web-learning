@@ -33,7 +33,7 @@ li {
     height: 400px;
     border: 2px solid black;
     margin: 50px auto;
-    padding: 50px;
+    padding: 50px 0px;
 }
 .css-demo-unit{
     background: lightgray;
