@@ -1,5 +1,5 @@
 html{
-    font-size: 10px;/* 10个像素 */
+    font-size: 20px;/* 10个像素 */
     font-family: Open Sans, sans-serif
 }
 p{
@@ -35,3 +35,31 @@ li {
     margin: 50px auto;
     padding: 50px;
 }
+.css-demo-unit{
+    font-size: 32px;
+}
+#css-demo-unit-px{
+    background: lightgray;
+    border: 2px solid black;
+    width: 100px;
+    margin: 10px 50px;
+}
+#css-demo-unit-em{
+    background: lightgray;
+    border: 2px solid black;
+    width: 100px;
+    margin: 10px 50em;
+}
+#css-demo-unit-rem{
+    background: lightgray;
+    border: 2px solid black;
+    width: 100px;
+    margin: 10px 50rem;
+}
+#css-demo-unit-auto{
+    background: lightgray;
+    border: 2px solid black;
+    width: 100px;
+    margin: auto;
+}
+
