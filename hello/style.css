@@ -69,4 +69,7 @@ li {
 #css-demo-unit-percent{
     margin: 0 20%;
 }
-
+img{
+    display: block;
+    margin: 0 auto;
+}
