@@ -36,36 +36,23 @@ li {
     padding: 50px;
 }
 .css-demo-unit{
+    background: lightgray;
+    border: 2px solid black;
     font-size: 32px;
 }
 #css-demo-unit-px{
-    background: lightgray;
-    border: 2px solid black;
-    width: 100px;
     margin: 10px 50px;
 }
 #css-demo-unit-em{
-    background: lightgray;
-    border: 2px solid black;
-    width: 100px;
     margin: 10px 50em;
 }
 #css-demo-unit-rem{
-    background: lightgray;
-    border: 2px solid black;
-    width: 100px;
     margin: 10px 50rem;
 }
 #css-demo-unit-auto{
-    background: lightgray;
-    border: 2px solid black;
-    width: 100px;
     margin: auto;
 }
 #css-demo-unit-percent{
-    background: lightgray;
-    border: 2px solid black;
-    width: 100px;
     margin: 0 20%;
 }
 
