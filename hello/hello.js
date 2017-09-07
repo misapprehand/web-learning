@@ -20,6 +20,11 @@ var num2 = 2;
 mulDiv.innerHTML= num1 + '*'+num2 + '=' + multiply(num1,num2);
 
 //点击事件
-document.querySelector('html').onclick = function() {
-    alert('Hello Event!');
-}
+//document.querySelector('html').onclick = function() {
+//    alert('Hello Event!');
+//}
+//点击按钮，显示数字
+document.getElementById('1').onclick = function(){
+    var result = document.getElementById('result');
+    result.innerHTML = '1';
+};
