@@ -27,17 +27,20 @@ mulDiv.innerHTML= num1 + '*'+num2 + '=' + multiply(num1,num2);
 document.getElementById('1').onclick = function(){
     var result = document.getElementById('result');
     result.innerHTML = result.innerHTML+'1';
-};
+}
 document.getElementById('2').onclick = function(){
     var result = document.getElementById('result');
     result.innerHTML = result.innerHTML+'2';
 };
 //简单的乘法器
+var inputArray = [];
 document.getElementById('mul-1').onclick = function(){
+    inputArray.push(1);
     var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'1';
 };
 document.getElementById('mul-2').onclick = function(){
+    inputArray.push(2);
     var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'2';
 };
@@ -47,6 +50,6 @@ document.getElementById('mul-*').onclick = function(){
 };
 document.getElementById('mul-=').onclick = function(){
     var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+'=';
+    result.innerHTML = result.innerHTML+'='+multiply(inputArray[0],inputArray[1]);
 };
 
