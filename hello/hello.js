@@ -34,22 +34,26 @@ document.getElementById('2').onclick = function(){
 };
 //简单的乘法器
 var inputArray = [];
-document.getElementById('mul-1').onclick = function(){
-    inputArray.push(1);
+
+function appendResult(content){
     var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+'1';
-};
-document.getElementById('mul-2').onclick = function(){
-    inputArray.push(2);
-    var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+'2';
-};
-document.getElementById('mul-*').onclick = function(){
-    var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+'*';
-};
-document.getElementById('mul-=').onclick = function(){
-    var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+'='+multiply(inputArray[0],inputArray[1]);
-};
+    result.innerHTML = result.innerHTML+content;
+}
+function buttonClickHandler(event){
+    var value = event.target.value;
+    var number = Number(value);
+    if( number ){
+        inputArray.push(number);
+    }
+    appendResult(value); 
+}
+function resultClickHandler(event){
+    buttonClickHandler(event);
+    appendResult(multiply(inputArray[0],inputArray[1]));
+}
+document.getElementById('mul-1').onclick = buttonClickHandler;
+document.getElementById('mul-2').onclick = buttonClickHandler;
+document.getElementById('mul-*').onclick = buttonClickHandler;
+document.getElementById('mul-=').onclick = resultClickHandler;
+
 
