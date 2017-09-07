@@ -10,4 +10,11 @@ helloDiv.innerHTML=hello();
 function hello(){
     return 'hello';
 }
-
+//自定义函数2
+function multiply(num1,num2){
+    return num1*num2;
+}
+var mulDiv = document.querySelector('#mul_div');
+var num1 = 1;
+var num2 = 2;
+mulDiv.innerHTML= num1 + '*'+num2 + '=' + multiply(num1,num2);
