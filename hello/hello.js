@@ -26,5 +26,9 @@ mulDiv.innerHTML= num1 + '*'+num2 + '=' + multiply(num1,num2);
 //点击按钮，显示数字
 document.getElementById('1').onclick = function(){
     var result = document.getElementById('result');
-    result.innerHTML = '1';
+    result.innerHTML = result.innerHTML+'1';
+};
+document.getElementById('2').onclick = function(){
+    var result = document.getElementById('result');
+    result.innerHTML = result.innerHTML+'2';
 };
