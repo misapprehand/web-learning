@@ -18,3 +18,8 @@ var mulDiv = document.querySelector('#mul_div');
 var num1 = 1;
 var num2 = 2;
 mulDiv.innerHTML= num1 + '*'+num2 + '=' + multiply(num1,num2);
+
+//点击事件
+document.querySelector('html').onclick = function() {
+    alert('Hello Event!');
+}
