@@ -33,20 +33,20 @@ document.getElementById('2').onclick = function(){
     result.innerHTML = result.innerHTML+'2';
 };
 //简单的乘法器
-document.getElementById('1').onclick = function(){
-    var result = document.getElementById('result');
+document.getElementById('mul-1').onclick = function(){
+    var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'1';
 };
-document.getElementById('2').onclick = function(){
-    var result = document.getElementById('result');
+document.getElementById('mul-2').onclick = function(){
+    var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'2';
 };
-document.getElementById('*').onclick = function(){
-    var result = document.getElementById('result');
+document.getElementById('mul-*').onclick = function(){
+    var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'*';
 };
-document.getElementById('=').onclick = function(){
-    var result = document.getElementById('result');
+document.getElementById('mul-=').onclick = function(){
+    var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+'=';
 };
 
