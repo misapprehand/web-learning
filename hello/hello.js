@@ -58,8 +58,12 @@ function resultClickHandler(event){
 function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
+    inputArray =[];
 }
-var number_buttons = ['mul-1','mul-2','mul-*'];
+var number_buttons = ['mul-1',
+                      'mul-2',
+                      'mul-3',
+                      'mul-*'];
 for( var i=0; i< number_buttons.length;i++ ){
     document.getElementById(number_buttons[i]).onclick = buttonClickHandler;
 }
