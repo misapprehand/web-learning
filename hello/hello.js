@@ -76,6 +76,12 @@ var map = {
     "mul-2":"2",
     "mul-3":"3",
     "mul-4":"4",
+    "mul-5":"5",
+    "mul-6":"6",
+    "mul-7":"7",
+    "mul-8":"8",
+    "mul-9":"9",
+    "mul-0":"0",
     "mul-*":"*"
 };
 for(var element_key in map){
