@@ -68,7 +68,7 @@ function create_button(id,value){
     element.setAttribute("value",value);
     element.onclick = buttonClickHandler;
 
-    document.getElementById('multiplier').appendChild(element);
+    document.getElementById('number-pad-r1').appendChild(element);
     return element;
 }
 var map = {

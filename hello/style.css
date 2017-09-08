@@ -73,3 +73,9 @@ img{
     display: block;
     margin: 0 auto;
 }
+#mul-result{
+    height: 1.5rem;
+    width: 10rem;
+    border:2px solid black;
+    margin: 0 0 1rem 0;
+}
