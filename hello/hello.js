@@ -66,30 +66,18 @@ function create_button(id,value){
     element.setAttribute("type","button");
     element.setAttribute("id",id);
     element.setAttribute("value",value);
+    element.onclick = buttonClickHandler;
 
+    document.getElementById('multiplier').appendChild(element);
     return element;
 }
 
-var number_button_element = create_button("mul-1","1");
-document.getElementById('multiplier').appendChild(number_button_element);
+create_button("mul-1","1");
+create_button("mul-2","2");
+create_button("mul-3","3");
+create_button("mul-4","4");
+create_button("mul-*","*");
 
-number_button_element = create_button("mul-2","2");
-document.getElementById('multiplier').appendChild(number_button_element);
-
-number_button_element = create_button("mul-3","3");
-document.getElementById('multiplier').appendChild(number_button_element);
-
-number_button_element = create_button("mul-4","4");
-document.getElementById('multiplier').appendChild(number_button_element);
-
-var number_buttons = ['mul-1',
-                      'mul-2',
-                      'mul-3',
-                      'mul-4',
-                      'mul-*'];
-for( var i=0; i< number_buttons.length;i++ ){
-    document.getElementById(number_buttons[i]).onclick = buttonClickHandler;
-}
 
 document.getElementById('mul-=').onclick = resultClickHandler;
 document.getElementById('mul-clr').onclick = clearClickHandler;
