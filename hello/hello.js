@@ -60,13 +60,21 @@ function clearClickHandler(event){
     clearResult();
     inputArray =[];
 }
+var number_button_element = document.createElement("input");
+number_button_element.setAttribute("type","button");
+number_button_element.setAttribute("id","mul-4");
+number_button_element.setAttribute("value","4");
+document.getElementById('multiplier').appendChild(number_button_element);
+
 var number_buttons = ['mul-1',
                       'mul-2',
                       'mul-3',
+                      'mul-4',
                       'mul-*'];
 for( var i=0; i< number_buttons.length;i++ ){
     document.getElementById(number_buttons[i]).onclick = buttonClickHandler;
 }
+
 document.getElementById('mul-=').onclick = resultClickHandler;
 document.getElementById('mul-clr').onclick = clearClickHandler;
 
