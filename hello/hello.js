@@ -59,9 +59,10 @@ function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
 }
-document.getElementById('mul-1').onclick = buttonClickHandler;
-document.getElementById('mul-2').onclick = buttonClickHandler;
-document.getElementById('mul-*').onclick = buttonClickHandler;
+var number_buttons = ['mul-1','mul-2','mul-*'];
+for( var i=0; i< number_buttons.length;i++ ){
+    document.getElementById(number_buttons[i]).onclick = buttonClickHandler;
+}
 document.getElementById('mul-=').onclick = resultClickHandler;
 document.getElementById('mul-clr').onclick = clearClickHandler;
 
