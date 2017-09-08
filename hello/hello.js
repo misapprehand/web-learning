@@ -60,11 +60,18 @@ function clearClickHandler(event){
     clearResult();
     inputArray =[];
 }
-var number_button_element = document.createElement("input");
-number_button_element.setAttribute("type","button");
-number_button_element.setAttribute("id","mul-4");
-number_button_element.setAttribute("value","4");
+function create_button(id,value){
+    var element = document.createElement("input");
+    document.createElement("input");
+    element.setAttribute("type","button");
+    element.setAttribute("id",id);
+    element.setAttribute("value",value);
+
+    return element;
+}
+var number_button_element = create_button("mul-4","4");
 document.getElementById('multiplier').appendChild(number_button_element);
+
 
 var number_buttons = ['mul-1',
                       'mul-2',
