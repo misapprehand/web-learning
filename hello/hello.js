@@ -71,7 +71,7 @@ function create_button(parentNode,id,value){
     parentNode.appendChild(element);
     return element;
 }
-var parentNode = document.getElementById('number-pad-r1');
+
 var map = {
     "mul-1":"1",
     "mul-2":"2",
@@ -86,6 +86,16 @@ var map = {
     "mul-*":"*"
 };
 for(var element_key in map){
+    var parentNode;
+    if(["mul-1","mul-2","mul-3","mul-4","mul-5"].includes(element_key)){
+        parentNode = document.getElementById('number-pad-r1');
+    }
+    else if(["mul-6","mul-7","mul-8","mul-9","mul-0"].includes(element_key)){
+        parentNode = document.getElementById('number-pad-r2');
+    }
+    else{
+        parentNode = document.getElementById('number-pad-r3');
+    }
     create_button(parentNode,element_key,map[element_key]);
 }
 document.getElementById('mul-=').onclick = resultClickHandler;
