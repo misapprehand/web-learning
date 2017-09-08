@@ -69,9 +69,18 @@ function create_button(id,value){
 
     return element;
 }
-var number_button_element = create_button("mul-4","4");
+
+var number_button_element = create_button("mul-1","1");
 document.getElementById('multiplier').appendChild(number_button_element);
 
+number_button_element = create_button("mul-2","2");
+document.getElementById('multiplier').appendChild(number_button_element);
+
+number_button_element = create_button("mul-3","3");
+document.getElementById('multiplier').appendChild(number_button_element);
+
+number_button_element = create_button("mul-4","4");
+document.getElementById('multiplier').appendChild(number_button_element);
 
 var number_buttons = ['mul-1',
                       'mul-2',
