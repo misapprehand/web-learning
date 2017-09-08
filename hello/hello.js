@@ -39,6 +39,10 @@ function appendResult(content){
     var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+content;
 }
+function clearResult(){
+    var result = document.getElementById('mul-result');
+    result.innerHTML = '';
+}
 function buttonClickHandler(event){
     var value = event.target.value;
     var number = Number(value);
@@ -51,9 +55,14 @@ function resultClickHandler(event){
     buttonClickHandler(event);
     appendResult(multiply(inputArray[0],inputArray[1]));
 }
+function clearClickHandler(event){
+    buttonClickHandler(event);
+    clearResult();
+}
 document.getElementById('mul-1').onclick = buttonClickHandler;
 document.getElementById('mul-2').onclick = buttonClickHandler;
 document.getElementById('mul-*').onclick = buttonClickHandler;
 document.getElementById('mul-=').onclick = resultClickHandler;
+document.getElementById('mul-clr').onclick = clearClickHandler;
 
 
