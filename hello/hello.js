@@ -46,7 +46,7 @@ function clearResult(){
 function buttonClickHandler(event){
     var value = event.target.value;
     var number = Number(value);
-    if( number ){
+    if( number || number === 0){
         inputArray.push(number);
     }
     appendResult(value); 
@@ -71,7 +71,17 @@ function create_button(parentNode,id,value){
     parentNode.appendChild(element);
     return element;
 }
+function create_function_button(parentNode,id,value,cb){
+    var element = document.createElement("input");
+    document.createElement("input");
+    element.setAttribute("type","button");
+    element.setAttribute("id",id);
+    element.setAttribute("value",value);
+    element.onclick = cb;
 
+    parentNode.appendChild(element);
+    return element;
+}
 var map = {
     "mul-1":"1",
     "mul-2":"2",
@@ -98,7 +108,9 @@ for(var element_key in map){
     }
     create_button(parentNode,element_key,map[element_key]);
 }
-document.getElementById('mul-=').onclick = resultClickHandler;
-document.getElementById('mul-clr').onclick = clearClickHandler;
+var parentNode = document.getElementById('number-pad-r3');
+create_function_button(parentNode,'mul-=',"=",resultClickHandler);
+create_function_button(parentNode,'mul-clr',"清除",clearClickHandler);
+
 
 
