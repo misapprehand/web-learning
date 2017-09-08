@@ -71,13 +71,28 @@ function create_button(id,value){
     document.getElementById('multiplier').appendChild(element);
     return element;
 }
+var map = {
+    "mul-1":"1",
+    "mul-2":"2",
+    "mul-3":"3",
+    "mul-4":"4",
+    "mul-*":"*"
+};
 
-create_button("mul-1","1");
-create_button("mul-2","2");
-create_button("mul-3","3");
-create_button("mul-4","4");
-create_button("mul-*","*");
+var element_key = "mul-1";
+create_button(element_key,map[element_key]);
 
+element_key = "mul-2";
+create_button(element_key,map[element_key]);
+
+element_key = "mul-3";
+create_button(element_key,map[element_key]);
+
+element_key = "mul-4";
+create_button(element_key,map[element_key]);
+
+element_key = "mul-*";
+create_button(element_key,map[element_key]);
 
 document.getElementById('mul-=').onclick = resultClickHandler;
 document.getElementById('mul-clr').onclick = clearClickHandler;
