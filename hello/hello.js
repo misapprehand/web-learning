@@ -60,18 +60,7 @@ function clearClickHandler(event){
     clearResult();
     inputArray =[];
 }
-function create_button(parentNode,id,value){
-    var element = document.createElement("input");
-    document.createElement("input");
-    element.setAttribute("type","button");
-    element.setAttribute("id",id);
-    element.setAttribute("value",value);
-    element.onclick = buttonClickHandler;
-
-    parentNode.appendChild(element);
-    return element;
-}
-function create_function_button(parentNode,id,value,cb){
+function create_button(parentNode,id,value,cb=buttonClickHandler){
     var element = document.createElement("input");
     document.createElement("input");
     element.setAttribute("type","button");
@@ -109,8 +98,8 @@ for(var element_key in map){
     create_button(parentNode,element_key,map[element_key]);
 }
 var parentNode = document.getElementById('number-pad-r3');
-create_function_button(parentNode,'mul-=',"=",resultClickHandler);
-create_function_button(parentNode,'mul-clr',"清除",clearClickHandler);
+create_button(parentNode,'mul-=',"=",resultClickHandler);
+create_button(parentNode,'mul-clr',"清除",clearClickHandler);
 
 
 
