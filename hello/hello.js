@@ -60,7 +60,7 @@ function clearClickHandler(event){
     clearResult();
     inputArray =[];
 }
-function create_button(id,value){
+function create_button(parentNode,id,value){
     var element = document.createElement("input");
     document.createElement("input");
     element.setAttribute("type","button");
@@ -68,9 +68,10 @@ function create_button(id,value){
     element.setAttribute("value",value);
     element.onclick = buttonClickHandler;
 
-    document.getElementById('number-pad-r1').appendChild(element);
+    parentNode.appendChild(element);
     return element;
 }
+var parentNode = document.getElementById('number-pad-r1');
 var map = {
     "mul-1":"1",
     "mul-2":"2",
@@ -85,7 +86,7 @@ var map = {
     "mul-*":"*"
 };
 for(var element_key in map){
-    create_button(element_key,map[element_key]);
+    create_button(parentNode,element_key,map[element_key]);
 }
 document.getElementById('mul-=').onclick = resultClickHandler;
 document.getElementById('mul-clr').onclick = clearClickHandler;
