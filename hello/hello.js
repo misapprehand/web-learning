@@ -82,7 +82,9 @@ var map = {
     "mul-8":"8",
     "mul-9":"9",
     "mul-0":"0",
-    "mul-*":"*"
+    "mul-*":"*",
+    "mul-=":"=",
+    "mul-clr":"清除"
 };
 for(var element_key in map){
     var parentNode;
@@ -95,11 +97,16 @@ for(var element_key in map){
     else{
         parentNode = document.getElementById('number-pad-r3');
     }
-    create_button(parentNode,element_key,map[element_key]);
+    if(element_key === 'mul-='){
+        create_button(parentNode,element_key,map[element_key],resultClickHandler);
+    }
+    else if(element_key === 'mul-clr'){
+        create_button(parentNode,element_key,map[element_key],clearClickHandler);
+    }else{
+        create_button(parentNode,element_key,map[element_key]);
+    }
 }
-var parentNode = document.getElementById('number-pad-r3');
-create_button(parentNode,'mul-=',"=",resultClickHandler);
-create_button(parentNode,'mul-clr',"清除",clearClickHandler);
+
 
 
 
