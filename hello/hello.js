@@ -72,41 +72,27 @@ function create_button(parentNode,id,value,cb=buttonClickHandler){
     return element;
 }
 var map = {
-    "mul-1":"1",
-    "mul-2":"2",
-    "mul-3":"3",
-    "mul-4":"4",
-    "mul-5":"5",
-    "mul-6":"6",
-    "mul-7":"7",
-    "mul-8":"8",
-    "mul-9":"9",
-    "mul-0":"0",
-    "mul-*":"*",
-    "mul-=":"=",
-    "mul-clr":"清除"
-};
-for(var element_key in map){
-    var parentNode;
-    if(["mul-1","mul-2","mul-3","mul-4","mul-5"].includes(element_key)){
-        parentNode = document.getElementById('number-pad-r1');
-    }
-    else if(["mul-6","mul-7","mul-8","mul-9","mul-0"].includes(element_key)){
-        parentNode = document.getElementById('number-pad-r2');
-    }
-    else{
-        parentNode = document.getElementById('number-pad-r3');
-    }
-    if(element_key === 'mul-='){
-        create_button(parentNode,element_key,map[element_key],resultClickHandler);
-    }
-    else if(element_key === 'mul-clr'){
-        create_button(parentNode,element_key,map[element_key],clearClickHandler);
-    }else{
-        create_button(parentNode,element_key,map[element_key]);
-    }
+    "mul-1":{ parent:'number-pad-r1', value:'1' },
+    "mul-2":{ parent:'number-pad-r1', value:'2' },
+    "mul-3":{ parent:'number-pad-r1', value:'3' },
+    "mul-4":{ parent:'number-pad-r1', value:'4' },
+    "mul-5":{ parent:'number-pad-r1', value:'5' },
+    "mul-6":{ parent:'number-pad-r2', value:'6' },
+    "mul-7":{ parent:'number-pad-r2', value:'7' },
+    "mul-8":{ parent:'number-pad-r2', value:'8' },
+    "mul-9":{ parent:'number-pad-r2', value:'9' },
+    "mul-0":{ parent:'number-pad-r2', value:'0' },
+    "mul-*":{ parent:'number-pad-r3', value:'*' },
+    "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
+    "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
-
+for(const [ k, v ] of map){
+    create_button(document.getElementById(v.parent),
+                  k,
+                  v,
+                  v.cb || buttonClickHandler 
+                 );
+}
 
 
 
