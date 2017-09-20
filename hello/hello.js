@@ -86,10 +86,11 @@ var map = {
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
-for(const [ k, v ] of map){
+for(var  k  in map){
+    var v = map[k];
     create_button(document.getElementById(v.parent),
                   k,
-                  v,
+                  v.value,
                   v.cb || buttonClickHandler 
                  );
 }
