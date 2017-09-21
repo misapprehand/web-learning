@@ -1,9 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/js_basic/hello.js',
+    entry: {
+        './src/js_basic/hello': './src/js_basic/hello.js',
+        './src/calc/calc': './src/calc/calc.js',
+    },
     output:{
-        filename: 'hello_bundle.js',
-        path: path.resolve(__dirname, 'src/js_basic')
+        path: __dirname,
+        filename: '[name]_bundle.js',
     }
 };

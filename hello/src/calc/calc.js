@@ -1,3 +1,4 @@
+import multiply from '../math/math.js';
 //简单的乘法器
 var inputArray = [];
 
