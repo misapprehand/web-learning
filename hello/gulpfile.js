@@ -9,5 +9,5 @@ gulp.task('browser-sync',function(){
             baseDir: "./"
         }
     });
-    gulp.watch("src/**/*.html").on("change",reload);
+    gulp.watch(["src/**/*.html","src/**/*.js","css/*.css"]).on("change",reload);
 });
