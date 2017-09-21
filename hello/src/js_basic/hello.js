@@ -1,3 +1,5 @@
+import multiply from '../math/math.js';
+
 //在标题栏显示hello
 var myHeading = document.querySelector('#hello_title');
 var old = myHeading.innerHTML;
