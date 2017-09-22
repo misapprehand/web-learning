@@ -16,5 +16,5 @@ document.body.appendChild(root);
 
 const js_basic = document.getElementById("js_basic_entry");
 js_basic.onclick = function(){
-    root.innerHTML = createJsBaisc();
+     createJsBaisc(root);
 }

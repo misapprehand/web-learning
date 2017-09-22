@@ -1,8 +1,7 @@
 import multiply from '../math/math.js';
 
-function createItems() {
-    //    const root = document.getElementById('js_basic');
-    const root = document.createElement('js_basic');
+function createItems(node) {
+    const root = node;
     root.innerHTML = '<h2 id="hello_title">Hello 标题</h2>' +
         '<h2>自定义函数</h2>' +
         '<div id="hello_div"></div>' +
@@ -18,9 +17,8 @@ function createItems() {
     return root;
 }
 
-function createJsBasic() {
-    const root = createItems();
-    document.body.appendChild(root);
+function createJsBasic(node) {
+    const root = createItems(node);
     //在标题栏显示hello
     var myHeading = document.querySelector('#hello_title');
     var old = myHeading.innerHTML;
