@@ -16,7 +16,8 @@
     "start": "gulp serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "hello": "echo hello",
-    "build": "webpack"
+    "build": "webpack --progress --colors --watch",
+    "prestart": "npm run build &"
   },
   "repository": {
     "type": "git",
