@@ -1,5 +1,22 @@
 import multiply from '../math/math.js';
 
+function createItems(){
+    const root = document.getElementById('js_basic');
+    root.innerHTML ='<h2 id="hello_title">Hello 标题</h2>'
+        +'<h2>自定义函数</h2>'
+        +'<div id="hello_div"></div>'
+        +'<h2>自定义函数2</h2>'
+        +'<div id="mul_div"></div>'
+        +'<h2>点按钮，显示数字</h2>'
+        +'<div id="number_btn_div">'
+        +'<input type="button" id="1" value="1" />'
+        +'<input type="button" id="2" value="2" />'
+        +'<div id="result">'
+        +'</div>'
+        +'</div>';
+    return root;
+}
+document.body.appendChild(createItems());
 //在标题栏显示hello
 var myHeading = document.querySelector('#hello_title');
 var old = myHeading.innerHTML;
