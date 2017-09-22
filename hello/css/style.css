@@ -83,3 +83,13 @@ img{
     float: left;
     margin-right: 30px;
 }
+
+.two-column div:nth-of-type(1){
+    width:50%;
+    float:left;
+}
+.two-column div:nth-of-type(2){
+    width:50%;
+    float:right;
+}
+
