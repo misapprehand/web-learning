@@ -54,5 +54,4 @@ function createJsBasic(node) {
         result.innerHTML = result.innerHTML + '2';
     };
 }
-//createJsBasic();
 export default createJsBasic;
