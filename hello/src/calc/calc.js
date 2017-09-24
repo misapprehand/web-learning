@@ -53,11 +53,24 @@ var map = {
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
-for(var  k  in map){
-    var v = map[k];
-    create_button(document.getElementById(v.parent),
-                  k,
-                  v.value,
-                  v.cb || buttonClickHandler 
-                 );
+function createCalc(){
+    for(var  k  in map){
+        var v = map[k];
+        create_button(document.getElementById(v.parent),
+                      k,
+                      v.value,
+                      v.cb || buttonClickHandler 
+                     );
+    }
 }
+function createPage(content){
+    content.innerHTML = '<h2>简单乘法器</h2>'
+     +'<div id="multiplier">'
+     +'<div id="mul-result"></div>'
+     +'<div id="number-pad-r1"></div>'
+     +'<div id="number-pad-r2"></div>'
+     +'<div id="number-pad-r3"></div>'
+     +'</div>';
+    createCalc();
+}
+export default createPage;
