@@ -2,7 +2,7 @@ import createJsBaisc from './js_basic/hello';
 
 function entries(){
     const root = document.createElement('div');
-    root.innerHTML = '<div class="two-column">'
+    root.innerHTML = '<div class="main__sidebar">'
                      +'<div>'
                      +'<p> <a href="src/html_element/html_element_category.html">HTML元素分类</a>'
                      +'</p><p><a href="src/html_element/html_element_attribute.html">HTML元素属性</a></p>'
