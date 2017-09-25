@@ -1,4 +1,4 @@
-import multiply from '../math/math.js';
+import { multiply } from '../math/math.js';
 
 function createItems(node) {
     const root = node;

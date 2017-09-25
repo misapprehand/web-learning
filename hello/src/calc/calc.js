@@ -1,6 +1,7 @@
-import multiply from '../math/math.js';
+import { multiply, add } from '../math/math.js';
 //简单的乘法器
 var inputArray = [];
+var operator;
 
 function appendResult(content){
     var result = document.getElementById('mul-result');
@@ -20,7 +21,12 @@ function buttonClickHandler(event){
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
-    appendResult(multiply(inputArray[0],inputArray[1]));
+    if(operator === '*'){
+        appendResult(multiply(inputArray[0],inputArray[1]));
+    }
+    else if(operator === '+'){
+        appendResult(add(inputArray[0],inputArray[1]));
+    }
 }
 function clearClickHandler(event){
     buttonClickHandler(event);
@@ -38,6 +44,11 @@ function create_button(parentNode,id,value,cb=buttonClickHandler){
     parentNode.appendChild(element);
     return element;
 }
+function opClickHandler(event){
+    var value = event.target.value;
+    appendResult(value);
+    operator = value;
+}
 var map = {
     "mul-1":{ parent:'number-pad-r1', value:'1' },
     "mul-2":{ parent:'number-pad-r1', value:'2' },
@@ -49,7 +60,8 @@ var map = {
     "mul-8":{ parent:'number-pad-r2', value:'8' },
     "mul-9":{ parent:'number-pad-r2', value:'9' },
     "mul-0":{ parent:'number-pad-r2', value:'0' },
-    "mul-*":{ parent:'number-pad-r3', value:'*' },
+    "mul-*":{ parent:'number-pad-r3', value:'*', cb:opClickHandler },
+    "mul-+":{ parent:'number-pad-r3', value:'+', cb:opClickHandler },
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
