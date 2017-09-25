@@ -63,19 +63,14 @@ function createCalc(){
                      );
     }
 }
+
 function createPage(content){
   content.innerHTML = '<h2>简单乘法器</h2>'
   +'<div id="multiplier">'
-  +'<ul >'
-  +'<li id="mul-result">'
-  +'</li>'
-  +'<li id="number-pad-r1">'
-  +'</li>'
-  +'<li id="number-pad-r2">'
-  +'</li>'
-  +'<li id="number-pad-r3">'
-  +'</li>'
-  +'</ul>'
+  +'<div id="mul-result"></div>'
+  +'<div id="number-pad-r1"></div>'
+  +'<div id="number-pad-r2"></div>'
+  +'<div id="number-pad-r3"></div>'
   +'</div>'
   ;
   createCalc();

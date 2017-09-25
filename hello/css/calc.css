@@ -12,3 +12,8 @@ ul li{
     list-style-type:none;
     paddng:0;
 }
+#multiplier{
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
