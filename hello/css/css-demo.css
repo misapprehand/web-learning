@@ -62,4 +62,8 @@
 .cssdemo__box{
     display: flex;
 }
+.cssdemo__box--vertical{
+    display: flex;
+    flex-flow: column;
+}
 
