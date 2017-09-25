@@ -1,8 +1,21 @@
-.main__sidebar div:nth-of-type(1){
-    width:30%;
-    float:left;
+#content{
+    background: white;
 }
-.main__sidebar div:nth-of-type(2){
-    width:60%;
-    float:right;
+#main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+}
+#main > nav{
+    padding: 5px;
+    flex: 1;
+    order: 1;
+    background: #43ccff;
+}
+#main > article{
+    margin: 4px;
+    padding: 5px;
+    flex: 6;
+    order: 2;
 }

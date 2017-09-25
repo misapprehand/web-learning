@@ -3,8 +3,8 @@ import createCalc from './calc/calc';
 
 function entries(){
     const root = document.createElement('div');
-    root.innerHTML = '<div class="main__sidebar">'
-                     +'<div>'
+    root.innerHTML = '<div id="main">'
+                     +'<nav>'
                      +'<p> <a href="src/html_element/html_element_category.html">HTML元素分类</a>'
                      +'</p><p><a href="src/html_element/html_element_attribute.html">HTML元素属性</a></p>'
                      +'<p><a href="src/html_text/html_text.html">HTML文本</a></p>'
@@ -12,10 +12,9 @@ function entries(){
                      +'<p><a href="src/css_demo/css.html">CSS</a></p>'
                      +'<p id="js_basic_entry"><a href="#js_basic">JS基础</a></p>'
                      +'<p id="calc_entry"><a href="#calc">计算器</a></p>'
-                     +"</div>"
-                     +'<div id="content"></div>'
-                     +'</div>'
-    ;
+                     +'</nav>'
+                     +'<article id="content"></article>'
+                     +'</div>';
     return root;
 }
 const root = entries();
