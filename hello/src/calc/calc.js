@@ -13,11 +13,12 @@ function clearResult(){
 }
 function buttonClickHandler(event){
     var value = event.target.value;
-    var number = Number(value);
-    if( number || number === 0){
-        inputArray.push(number);
-    }
     appendResult(value); 
+}
+function numberClickHandler(event){
+    buttonClickHandler(event);
+    var number = Number(event.target.value);
+    inputArray.push(number);
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
@@ -79,7 +80,7 @@ function createCalc(){
         create_button(document.getElementById(v.parent),
                       k,
                       v.value,
-                      v.cb || buttonClickHandler 
+                      v.cb || numberClickHandler
                      );
     }
 }
