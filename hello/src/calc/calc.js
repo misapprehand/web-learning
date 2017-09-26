@@ -1,4 +1,4 @@
-import { multiply, add } from '../math/math.js';
+import { multiply, add, sub, div } from '../math/math.js';
 //简单的乘法器
 var inputArray = [];
 var operator;
@@ -26,6 +26,12 @@ function resultClickHandler(event){
     }
     else if(operator === '+'){
         appendResult(add(inputArray[0],inputArray[1]));
+    }
+    else if(operator === '-'){
+        appendResult(sub(inputArray[0],inputArray[1]));
+    }
+    else if(operator === '/'){
+        appendResult(div(inputArray[0],inputArray[1]));
     }
 }
 function clearClickHandler(event){
@@ -60,8 +66,10 @@ var map = {
     "mul-8":{ parent:'number-pad-r2', value:'8' },
     "mul-9":{ parent:'number-pad-r2', value:'9' },
     "mul-0":{ parent:'number-pad-r2', value:'0' },
-    "mul-*":{ parent:'number-pad-r3', value:'*', cb:opClickHandler },
     "mul-+":{ parent:'number-pad-r3', value:'+', cb:opClickHandler },
+    "mul--":{ parent:'number-pad-r3', value:'-', cb:opClickHandler },
+    "mul-*":{ parent:'number-pad-r3', value:'*', cb:opClickHandler },
+    "mul-／":{ parent:'number-pad-r3', value:'/', cb:opClickHandler },
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
