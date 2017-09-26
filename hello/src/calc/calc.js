@@ -2,7 +2,21 @@ import { multiply, add, sub, div } from '../math/math.js';
 //简单的乘法器
 var inputArray = [];
 var operator;
-
+function inputAddNumber(number){
+    inputArray.push(number);
+}
+function inputAddOpertor(op){
+    operator = op;
+}
+function inputGetOperand(){
+    return [inputArray[0],inputArray[1]];
+}
+function inputClear(){
+    inputArray = [];
+}
+function inputGetOperator(){
+    return operator;
+}
 function appendResult(content){
     var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+content;
@@ -18,27 +32,30 @@ function buttonClickHandler(event){
 function numberClickHandler(event){
     buttonClickHandler(event);
     var number = Number(event.target.value);
-    inputArray.push(number);
+    inputAddNumber(number);
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
+    const [number1, number2 ] = inputGetOperand(); //ES6 let/const,解构
+    const operator = inputGetOperator();
+
     if(operator === '*'){
-        appendResult(multiply(inputArray[0],inputArray[1]));
+        appendResult(multiply(number1,number2));
     }
     else if(operator === '+'){
-        appendResult(add(inputArray[0],inputArray[1]));
+        appendResult(add(number1,number2));
     }
     else if(operator === '-'){
-        appendResult(sub(inputArray[0],inputArray[1]));
+        appendResult(sub(number1,number2));
     }
     else if(operator === '/'){
-        appendResult(div(inputArray[0],inputArray[1]));
+        appendResult(div(number1,number2));
     }
 }
 function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
-    inputArray =[];
+    inputClear();
 }
 function create_button(parentNode,id,value,cb=buttonClickHandler){
     var element = document.createElement("input");
