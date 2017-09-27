@@ -1,24 +1,24 @@
 var inputArray = [];
 var operator;
-function inputAddNumber(number){
+function addNumber(number){
     inputArray.push(number);
 }
-function inputAddOperator(op){
+function addOperator(op){
     operator = op;
 }
-function inputGetOperand(){
+function getOperand(){
     return [inputArray[0],inputArray[1]];
 }
-function inputClear(){
+function clear(){
     inputArray = [];
 }
-function inputGetOperator(){
+function getOperator(){
     return operator;
 }
 export {
-    inputAddNumber,
-    inputAddOperator,
-    inputGetOperand,
-    inputGetOperator,
-    inputClear
+    addNumber,
+    addOperator,
+    getOperand,
+    getOperator,
+    clear
 };

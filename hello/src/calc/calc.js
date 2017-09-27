@@ -17,12 +17,12 @@ function buttonClickHandler(event){
 function numberClickHandler(event){
     buttonClickHandler(event);
     var number = Number(event.target.value);
-    input.inputAddNumber(number);
+    input.addNumber(number);
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
-    const [number1, number2 ] = input.inputGetOperand(); //ES6 let/const,解构
-    const operator = input.inputGetOperator();
+    const [number1, number2 ] = input.getOperand(); //ES6 let/const,解构
+    const operator = input.getOperator();
 
     if(operator === '*'){
         appendResult(multiply(number1,number2));
@@ -40,7 +40,7 @@ function resultClickHandler(event){
 function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
-    input.inputClear();
+    input.clear();
 }
 function create_button({parentNode,id,value,cb=buttonClickHandler}){ //destructuring 改写函数参数
     var element = document.createElement("input");
@@ -56,7 +56,7 @@ function create_button({parentNode,id,value,cb=buttonClickHandler}){ //destructu
 function opClickHandler(event){
     var value = event.target.value;
     appendResult(value);
-    input.inputAddOperator(value);
+    input.addOperator(value);
 }
 var map = {
     "mul-1":{ parent:'number-pad-r1', value:'1' },
