@@ -1,16 +1,25 @@
-var inputArray = [];
-var operator;
+let operator;
+let first=0;
+let second=0;
 function addNumber(number){
-    inputArray.push(number);
+    if(hasOperator()){
+        second = second*10+number;
+    }else{
+        first = first*10+number;
+    }
+}
+function hasOperator(){
+    return operator;
 }
 function addOperator(op){
     operator = op;
 }
 function getOperand(){
-    return [inputArray[0],inputArray[1]];
+    return [first,second];
 }
 function clear(){
-    inputArray = [];
+    first =0;
+    second=0;
 }
 function getOperator(){
     return operator;
