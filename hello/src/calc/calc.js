@@ -42,7 +42,7 @@ function clearClickHandler(event){
     clearResult();
     input.inputClear();
 }
-function create_button(parentNode,id,value,cb=buttonClickHandler){
+function create_button({parentNode,id,value,cb=buttonClickHandler}){ //destructuring 改写函数参数
     var element = document.createElement("input");
     document.createElement("input");
     element.setAttribute("type","button");
@@ -76,13 +76,15 @@ var map = {
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
 }
+//使用 let/const and destructuring
 function createCalc(){
-    for(var  k  in map){
-        var v = map[k];
-        create_button(document.getElementById(v.parent),
-                      k,
-                      v.value,
-                      v.cb || numberClickHandler
+    for(const  k  in map){
+        const v = map[k];
+        create_button({parentNode:document.getElementById(v.parent),
+                       id:k,
+                       value:v.value,
+                       cb: v.cb || numberClickHandler
+                      }
                      );
     }
 }
