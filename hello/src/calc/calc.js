@@ -1,6 +1,8 @@
 import { multiply, add, sub, div } from '../math/math.js';
-import * as input from './input';
+//import * as input from './input';
+import Input from './input';
 
+const input = new Input();
 //简单的乘法器
 function appendResult(content){
     var result = document.getElementById('mul-result');

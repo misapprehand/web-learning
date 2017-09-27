@@ -36,11 +36,11 @@ function getOperator(){
 function end(){
     endFlag = true;
 }
-export {
-    addNumber,
-    addOperator,
-    getOperand,
-    getOperator,
-    clear,
-    end
-};
+function Input(){
+}
+Input.prototype.addNumber = addNumber;
+Input.prototype.addOperator = addOperator;
+Input.prototype.getOperand = getOperand;
+Input.prototype.getOperator = getOperator;
+Input.prototype.end = end;
+export default Input;
