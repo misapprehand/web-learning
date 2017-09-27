@@ -6,15 +6,18 @@
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
+    "jest": "^21.2.0",
+    "regenerator-runtime": "^0.11.0",
     "webpack": "^2.7.0"
   },
   "scripts": {
     "start": "gulp serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "hello": "echo hello",
     "build": "webpack --progress --colors --watch",
     "prestart": "npm run build &"
