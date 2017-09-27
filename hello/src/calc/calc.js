@@ -1,22 +1,7 @@
 import { multiply, add, sub, div } from '../math/math.js';
+import * as input from './input';
+
 //简单的乘法器
-var inputArray = [];
-var operator;
-function inputAddNumber(number){
-    inputArray.push(number);
-}
-function inputAddOpertor(op){
-    operator = op;
-}
-function inputGetOperand(){
-    return [inputArray[0],inputArray[1]];
-}
-function inputClear(){
-    inputArray = [];
-}
-function inputGetOperator(){
-    return operator;
-}
 function appendResult(content){
     var result = document.getElementById('mul-result');
     result.innerHTML = result.innerHTML+content;
@@ -32,12 +17,12 @@ function buttonClickHandler(event){
 function numberClickHandler(event){
     buttonClickHandler(event);
     var number = Number(event.target.value);
-    inputAddNumber(number);
+    input.inputAddNumber(number);
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
-    const [number1, number2 ] = inputGetOperand(); //ES6 let/const,解构
-    const operator = inputGetOperator();
+    const [number1, number2 ] = input.inputGetOperand(); //ES6 let/const,解构
+    const operator = input.inputGetOperator();
 
     if(operator === '*'){
         appendResult(multiply(number1,number2));
@@ -55,7 +40,7 @@ function resultClickHandler(event){
 function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
-    inputClear();
+    input.inputClear();
 }
 function create_button(parentNode,id,value,cb=buttonClickHandler){
     var element = document.createElement("input");
@@ -71,7 +56,7 @@ function create_button(parentNode,id,value,cb=buttonClickHandler){
 function opClickHandler(event){
     var value = event.target.value;
     appendResult(value);
-    operator = value;
+    input.inputAddOperator(value);
 }
 var map = {
     "mul-1":{ parent:'number-pad-r1', value:'1' },
