@@ -20,6 +20,7 @@ function getOperand(){
 function clear(){
     first =0;
     second=0;
+    operator="";
 }
 function getOperator(){
     return operator;
