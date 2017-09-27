@@ -21,6 +21,7 @@ function numberClickHandler(event){
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
+    input.end();
     const [number1, number2 ] = input.getOperand(); //ES6 let/const,解构
     const operator = input.getOperator();
 
@@ -40,7 +41,6 @@ function resultClickHandler(event){
 function clearClickHandler(event){
     buttonClickHandler(event);
     clearResult();
-    input.clear();
 }
 function create_button({parentNode,id,value,cb=buttonClickHandler}){ //destructuring 改写函数参数
     var element = document.createElement("input");
