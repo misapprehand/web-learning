@@ -1,46 +1,43 @@
-let operator;
-let first=0;
-let second=0;
-let endFlag = false;
-function addNumber(number){
-    if(endFlag){
-        clear();
+class Input{
+    constructor(arg){//构造函数
+        this.operator = "";
+        this.first = 0;
+        this.second = 0;
+        this.endFlag = false;
     }
-    if(hasOperator()){
-        second = second*10+number;
-    }else{
-        first = first*10+number;
+    addNumber(number){
+        if(this.endFlag){
+            this.clear();
+        }
+        if(this.hasOperator()){
+            this.second = this.second*10+number;
+        }else{
+            this.first = this.first*10+number;
+        }
+    }
+    hasOperator(){
+        return this.operator;
+    }
+    addOperator(op){
+        if(this.endFlag){
+            this.clear();
+        }
+        this.operator = op;
+    }
+    getOperand(){
+        return [this.first,this.second];
+    }
+    clear(){
+        this.first =0;
+        this.second=0;
+        this.operator="";
+        this.endFlag = false;
+    }
+    getOperator(){
+        return this.operator;
+    }
+    end(){
+        this.endFlag = true;
     }
 }
-function hasOperator(){
-    return operator;
-}
-function addOperator(op){
-    if(endFlag){
-        clear();
-    }
-    operator = op;
-}
-function getOperand(){
-    return [first,second];
-}
-function clear(){
-    first =0;
-    second=0;
-    operator="";
-    endFlag = false;
-}
-function getOperator(){
-    return operator;
-}
-function end(){
-    endFlag = true;
-}
-function Input(){
-}
-Input.prototype.addNumber = addNumber;
-Input.prototype.addOperator = addOperator;
-Input.prototype.getOperand = getOperand;
-Input.prototype.getOperator = getOperator;
-Input.prototype.end = end;
 export default Input;
