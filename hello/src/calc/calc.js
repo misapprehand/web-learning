@@ -1,5 +1,5 @@
-import { multiply, add, sub, div } from '../math/math.js';
-//import * as input from './input';
+//import { multiply, add, sub, div } from '../math/math.js';
+import Math from '../math/math.js';
 import Input from './input';
 
 const input = new Input();
@@ -28,16 +28,16 @@ function resultClickHandler(event){
     const operator = input.getOperator();
 
     if(operator === '*'){
-        appendResult(multiply(number1,number2));
+        appendResult(Math.multiply(number1,number2));
     }
     else if(operator === '+'){
-        appendResult(add(number1,number2));
+        appendResult(Math.add(number1,number2));
     }
     else if(operator === '-'){
-        appendResult(sub(number1,number2));
+        appendResult(Math.sub(number1,number2));
     }
     else if(operator === '/'){
-        appendResult(div(number1,number2));
+        appendResult(Math.div(number1,number2));
     }
 }
 function clearClickHandler(event){
