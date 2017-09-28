@@ -1,9 +1,10 @@
 class Input{
-    constructor(arg){//构造函数
+    constructor({clearCallback}){//构造函数
         this.operator = "";
         this.first = 0;
         this.second = 0;
         this.endFlag = false;
+        this.clearCallback = clearCallback;
     }
     addNumber(number){
         if(this.endFlag){
@@ -32,6 +33,9 @@ class Input{
         this.second=0;
         this.operator="";
         this.endFlag = false;
+        if(this.clearCallback){
+            this.clearCallback();
+        }
     }
     getOperator(){
         return this.operator;

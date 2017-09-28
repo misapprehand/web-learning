@@ -2,7 +2,7 @@
 import Math from '../math/math.js';
 import Input from './input';
 
-const input = new Input();
+const input = new Input({clearCallback:clearResult});
 //简单的乘法器
 function appendResult(content){
     var result = document.getElementById('mul-result');
@@ -17,9 +17,9 @@ function buttonClickHandler(event){
     appendResult(value); 
 }
 function numberClickHandler(event){
-    buttonClickHandler(event);
     var number = Number(event.target.value);
     input.addNumber(number);
+    buttonClickHandler(event);
 }
 function resultClickHandler(event){
     buttonClickHandler(event);
