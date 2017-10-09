@@ -38,8 +38,9 @@ function create_button({parentNode,id,value,cb=buttonClickHandler}){ //destructu
     element.setAttribute("type","button");
     element.setAttribute("id",id);
     element.setAttribute("value",value);
+    element.setAttribute("class","btn btn-default");
     element.onclick = cb;
-
+    
     parentNode.appendChild(element);
     return element;
 }
