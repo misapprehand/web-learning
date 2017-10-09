@@ -22,6 +22,10 @@ function numberClickHandler(event){
     buttonClickHandler(event);
 }
 function resultClickHandler(event){
+    if(input.isEnd()){
+        clearResult();
+        return;
+    }
     buttonClickHandler(event);
     input.end();
     const [number1, number2 ] = input.getOperand(); //ES6 let/const,解构

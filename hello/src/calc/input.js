@@ -43,5 +43,8 @@ class Input{
     end(){
         this.endFlag = true;
     }
+    isEnd(){
+        return this.endFlag;
+    }
 }
 export default Input;
