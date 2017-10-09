@@ -4,11 +4,11 @@ const input = new Input({clearCallback:clearResult});
 //简单的乘法器
 function appendResult(content){
     var result = document.getElementById('mul-result');
-    result.innerHTML = result.innerHTML+content;
+    result.value += content;
 }
 function clearResult(){
     var result = document.getElementById('mul-result');
-    result.innerHTML = '';
+    result.value='';
 }
 function buttonClickHandler(event){
     var value = event.target.value;
@@ -82,12 +82,12 @@ function createCalc(){
 
 function createPage(content){
   content.innerHTML = '<h2>简单乘法器</h2>'
-  +'<div id="multiplier">'
-  +'<div id="mul-result"></div>'
-  +'<div id="number-pad-r1"></div>'
-  +'<div id="number-pad-r2"></div>'
-  +'<div id="number-pad-r3"></div>'
-  +'</div>'
+        +'<div id="multiplier">'
+        +'<input id="mul-result" type="text" class="form-control" readonly />'
+        +'<div id="number-pad-r1"></div>'
+        +'<div id="number-pad-r2"></div>'
+        +'<div id="number-pad-r3"></div>'
+        +'</div>'
   ;
   createCalc();
 }
