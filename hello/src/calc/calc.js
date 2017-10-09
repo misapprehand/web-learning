@@ -79,7 +79,39 @@ function createCalc(){
                      );
     }
 }
+function createButtonBarContainer(){
+    const element = document.createElement("div");
+    element.setAttribute("type","button");
+    element.setAttribute("class","btn-group btn-group-justified");
+    element.setAttribute("role","group");
 
+    return element;
+}
+function createButtonItemInGroup(){
+    const element = document.createElement("div");
+    element.setAttribute("class","btn-group");
+    element.setAttribute("role","group");
+
+    return element;
+}
+function createButtonInButtonBar({title}){
+    const element = document.createElement("button");
+    element.setAttribute("type","button");
+    element.setAttribute("class","btn btn-default");
+    element.textContent = title;
+    return element;
+}
+function createButtonBar({titles}){
+    const element = createButtonBarContainer();
+    for(let title of titles){
+        const lineItem = createButtonItemInGroup();
+        const buttonItem = createButtonInButtonBar({title});
+        lineItem.appendChild(buttonItem);
+        element.appendChild(lineItem);
+    }
+    return element;
+}
+//按钮组
 function createPage(content){
   content.innerHTML = '<h2>简单乘法器</h2>'
         +'<div id="multiplier">'
@@ -90,6 +122,13 @@ function createPage(content){
         +'</div>'
   ;
   createCalc();
+  const container = document.getElementById("multiplier");
+  const titles = [
+      "1","2","3","4","5"
+  ]
+  const firstRow = createButtonBar({titles});
+    
+  container.appendChild(firstRow);
 }
 
 export default createPage;
