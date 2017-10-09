@@ -111,7 +111,6 @@ function createButtonBar({titles}){
     }
     return element;
 }
-//按钮组
 function createPage(content){
   content.innerHTML = '<h2>简单乘法器</h2>'
         +'<div id="multiplier">'
@@ -123,12 +122,29 @@ function createPage(content){
   ;
   createCalc();
   const container = document.getElementById("multiplier");
-  const titles = [
+  let titles = [
       "1","2","3","4","5"
-  ]
+  ];
   const firstRow = createButtonBar({titles});
-    
   container.appendChild(firstRow);
+
+  titles = [
+      "6","7","8","9","0"
+  ];
+  const secondRow = createButtonBar({titles});
+  container.appendChild(secondRow);    
+
+  titles = [
+      "+","-","*","/","="
+  ];
+  const thirdRow = createButtonBar({titles});
+  container.appendChild(thirdRow);    
+
+  titles = [
+      "清除"
+  ];
+  const forthRow = createButtonBar({titles});
+  container.appendChild(forthRow);    
 }
 
 export default createPage;
