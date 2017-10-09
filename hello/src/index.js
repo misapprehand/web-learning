@@ -1,5 +1,6 @@
 import createJsBaisc from './js_basic/hello';
 import createCalc from './calc/calc';
+import createBootstrap from './bootstrap_demo/index';
 
 function entries(){
     const root = document.createElement('div');
@@ -12,6 +13,7 @@ function entries(){
                      +'<p><a href="src/css_demo/css.html">CSS</a></p>'
                      +'<p id="js_basic_entry"><a href="#js_basic">JS基础</a></p>'
                      +'<p id="calc_entry"><a href="#calc">计算器</a></p>'
+                     +'<p id="bootstrap_entry"><a href="#bootstrap">Bootstrap Demo</a></p>'
                      +'</nav>'
                      +'<article id="content"></article>'
                      +'</div>';
@@ -28,4 +30,8 @@ js_basic.onclick = function(){
 const calc = document.getElementById("calc_entry");
 calc.onclick = function(){
     createCalc(content);
+}
+const bootstrapDemo = document.getElementById("bootstrap_entry");
+bootstrapDemo.onclick = function(){
+    createBootstrap(content);
 }
