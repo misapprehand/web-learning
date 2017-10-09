@@ -94,18 +94,20 @@ function createButtonItemInGroup(){
 
     return element;
 }
-function createButtonInButtonBar({title}){
+function createButtonInButtonBar({info}){
     const element = document.createElement("button");
     element.setAttribute("type","button");
     element.setAttribute("class","btn btn-default");
-    element.textContent = title;
+    element.setAttribute("value",info.value);
+    element.textContent = info.value;
+    element.onclick = info.cb || numberClickHandler;
     return element;
 }
-function createButtonBar({titles}){
+function createButtonBar({infos}){
     const element = createButtonBarContainer();
-    for(let title of titles){
+    for(let info of infos){
         const lineItem = createButtonItemInGroup();
-        const buttonItem = createButtonInButtonBar({title});
+        const buttonItem = createButtonInButtonBar({info});
         lineItem.appendChild(buttonItem);
         element.appendChild(lineItem);
     }
@@ -127,22 +129,22 @@ function createPage(content){
       for(let k of Object.keys(map)){
           const v = map[k];
           if(v.parent === rowId){
-              titles.push(v.value);
+              titles.push(v);
           }
       }
       return titles;
   }
   let titles = getTitleFromMap({map:map,rowId:"number-pad-r1"});
-  container.appendChild(createButtonBar({titles}));
+    container.appendChild(createButtonBar({infos:titles}));
 
   titles = getTitleFromMap({map:map,rowId:"number-pad-r2"});
-  container.appendChild(createButtonBar({titles}));    
+    container.appendChild(createButtonBar({infos:titles}));    
 
   titles = getTitleFromMap({map:map,rowId:"number-pad-r3"});
-  container.appendChild(createButtonBar({titles}));    
+    container.appendChild(createButtonBar({infos:titles}));    
 
   titles = getTitleFromMap({map:map,rowId:"number-pad-r4"});
-  container.appendChild(createButtonBar({titles}));    
+    container.appendChild(createButtonBar({infos:titles}));    
 }
 
 export default createPage;
