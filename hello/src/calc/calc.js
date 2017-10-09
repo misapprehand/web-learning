@@ -65,7 +65,7 @@ var map = {
     "mul-*":{ parent:'number-pad-r3', value:'*', cb:opClickHandler },
     "mul-／":{ parent:'number-pad-r3', value:'/', cb:opClickHandler },
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
-    "mul-clr":{ parent:'number-pad-r3',value:'清除', cb: clearClickHandler },
+    "mul-clr":{ parent:'number-pad-r4',value:'清除', cb: clearClickHandler },
 }
 //使用 let/const and destructuring
 function createCalc(){
@@ -120,31 +120,29 @@ function createPage(content){
         +'<div id="number-pad-r3"></div>'
         +'</div>'
   ;
-  createCalc();
+//  createCalc();
   const container = document.getElementById("multiplier");
-  let titles = [
-      "1","2","3","4","5"
-  ];
-  const firstRow = createButtonBar({titles});
-  container.appendChild(firstRow);
+  function getTitleFromMap({map,rowId}){
+      const titles = [];
+      for(let k of Object.keys(map)){
+          const v = map[k];
+          if(v.parent === rowId){
+              titles.push(v.value);
+          }
+      }
+      return titles;
+  }
+  let titles = getTitleFromMap({map:map,rowId:"number-pad-r1"});
+  container.appendChild(createButtonBar({titles}));
 
-  titles = [
-      "6","7","8","9","0"
-  ];
-  const secondRow = createButtonBar({titles});
-  container.appendChild(secondRow);    
+  titles = getTitleFromMap({map:map,rowId:"number-pad-r2"});
+  container.appendChild(createButtonBar({titles}));    
 
-  titles = [
-      "+","-","*","/","="
-  ];
-  const thirdRow = createButtonBar({titles});
-  container.appendChild(thirdRow);    
+  titles = getTitleFromMap({map:map,rowId:"number-pad-r3"});
+  container.appendChild(createButtonBar({titles}));    
 
-  titles = [
-      "清除"
-  ];
-  const forthRow = createButtonBar({titles});
-  container.appendChild(forthRow);    
+  titles = getTitleFromMap({map:map,rowId:"number-pad-r4"});
+  container.appendChild(createButtonBar({titles}));    
 }
 
 export default createPage;
