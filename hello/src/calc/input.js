@@ -1,3 +1,5 @@
+import Math from '../math/math.js';
+
 class Input{
     constructor({clearCallback}){//构造函数
         this.operator = "";
@@ -45,6 +47,23 @@ class Input{
     }
     isEnd(){
         return this.endFlag;
+    }
+    getResult(){
+        const [number1, number2 ] = this.getOperand(); //ES6 let/const,解构
+        const operator = this.getOperator();
+
+        if(operator === '*'){
+            return Math.multiply(number1,number2);
+        }
+        else if(operator === '+'){
+            return Math.add(number1,number2);
+        }
+        else if(operator === '-'){
+            return Math.sub(number1,number2);
+        }
+        else if(operator === '/'){
+            return Math.div(number1,number2);
+        }
     }
 }
 export default Input;

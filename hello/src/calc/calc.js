@@ -1,5 +1,3 @@
-//import { multiply, add, sub, div } from '../math/math.js';
-import Math from '../math/math.js';
 import Input from './input';
 
 const input = new Input({clearCallback:clearResult});
@@ -28,21 +26,7 @@ function resultClickHandler(event){
     }
     buttonClickHandler(event);
     input.end();
-    const [number1, number2 ] = input.getOperand(); //ES6 let/const,解构
-    const operator = input.getOperator();
-
-    if(operator === '*'){
-        appendResult(Math.multiply(number1,number2));
-    }
-    else if(operator === '+'){
-        appendResult(Math.add(number1,number2));
-    }
-    else if(operator === '-'){
-        appendResult(Math.sub(number1,number2));
-    }
-    else if(operator === '/'){
-        appendResult(Math.div(number1,number2));
-    }
+    appendResult(input.getResult());
 }
 function clearClickHandler(event){
     buttonClickHandler(event);
