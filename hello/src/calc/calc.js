@@ -55,7 +55,26 @@ var map = {
     "mul-=":{ parent:'number-pad-r3', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r4',value:'清除', cb: clearClickHandler },
 }
-function createPad(container){
+var map2 = {
+    "mul-1":{ parent:'number-pad-r1', value:'1' },
+    "mul-2":{ parent:'number-pad-r1', value:'2' },
+    "mul-3":{ parent:'number-pad-r1', value:'3' },
+    "mul-4":{ parent:'number-pad-r1', value:'4' },
+    "mul-5":{ parent:'number-pad-r2', value:'5' },
+    "mul-6":{ parent:'number-pad-r2', value:'6' },
+    "mul-7":{ parent:'number-pad-r2', value:'7' },
+    "mul-8":{ parent:'number-pad-r2', value:'8' },
+    "mul-9":{ parent:'number-pad-r3', value:'9' },
+    "mul-0":{ parent:'number-pad-r3', value:'0' },
+    "mul-+":{ parent:'number-pad-r3', value:'+', cb:opClickHandler },
+    "mul--":{ parent:'number-pad-r3', value:'-', cb:opClickHandler },
+    "mul-*":{ parent:'number-pad-r4', value:'*', cb:opClickHandler },
+    "mul-／":{ parent:'number-pad-r4', value:'/', cb:opClickHandler },
+    "mul-=":{ parent:'number-pad-r4', value:'=', cb: resultClickHandler },
+    "mul-clr":{ parent:'number-pad-r4',value:'清除', cb: clearClickHandler },
+}
+
+function createPad(container,infoMap){
     function getInfoFromMap({map,rowId}){
         const infos = [];
         for(let k of Object.keys(map)){
@@ -66,16 +85,16 @@ function createPad(container){
         }
         return infos;
     }
-    let infos = getInfoFromMap({map:map,rowId:"number-pad-r1"});
+    let infos = getInfoFromMap({map:infoMap,rowId:"number-pad-r1"});
     container.appendChild(createButtonBar({infos:infos}));
 
-    infos = getInfoFromMap({map:map,rowId:"number-pad-r2"});
+    infos = getInfoFromMap({map:infoMap,rowId:"number-pad-r2"});
     container.appendChild(createButtonBar({infos:infos}));    
 
-    infos = getInfoFromMap({map:map,rowId:"number-pad-r3"});
+    infos = getInfoFromMap({map:infoMap,rowId:"number-pad-r3"});
     container.appendChild(createButtonBar({infos:infos}));    
 
-    infos = getInfoFromMap({map:map,rowId:"number-pad-r4"});
+    infos = getInfoFromMap({map:infoMap,rowId:"number-pad-r4"});
     container.appendChild(createButtonBar({infos:infos}));    
 }
 function createButtonBarContainer(){
@@ -120,7 +139,7 @@ function createPage(content){
     ;
 
   const container = document.getElementById("multiplier");
-  createPad(container);
+    createPad(container,map);
 }
 
 export default createPage;
