@@ -1,6 +1,6 @@
 import Input from './input';
 import createThemeSelect from './themeSelect';
-import createPad from './pad';
+import {createPad,updatePad} from './pad';
 
 const input = new Input({clearCallback:clearResult});
 //简单的乘法器
@@ -75,6 +75,10 @@ var map2 = {
     "mul-=":{ parent:'number-pad-r4', value:'=', cb: resultClickHandler },
     "mul-clr":{ parent:'number-pad-r4',value:'清除', cb: clearClickHandler },
 }
+const themes = {
+    "主题1": map,
+    "主题2": map2
+}
 function createPage(content){
   content.innerHTML = '<h2>简单乘法器</h2>'
         +'<div id="multiplier">'
@@ -83,7 +87,7 @@ function createPage(content){
     ;
 
   const container = document.getElementById("multiplier");
-  createThemeSelect(container);
+  createThemeSelect({parentNode:container,onSelect:(select)=>updatePad(container,themes[select])});
   createPad(container,map);
 }
 
