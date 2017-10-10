@@ -132,14 +132,14 @@ function createButtonBar({infos}){
     return element;
 }
 function createPage(content){
-    content.innerHTML = '<h2>简单乘法器</h2>'
+  content.innerHTML = '<h2>简单乘法器</h2>'
         +'<div id="multiplier">'
         +'<input id="mul-result" type="text" class="form-control" readonly />'
         +'</div>'
     ;
 
   const container = document.getElementById("multiplier");
-    createPad(container,map);
+  createPad(container,map);
 }
 
 export default createPage;
