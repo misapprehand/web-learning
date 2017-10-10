@@ -11,14 +11,14 @@
 // <li><a href="#">Separated link</a></li>
 // </ul>
 // </div>
-function createThemeSelect({parentNode,onSelect}){
+function createThemeSelect({parentNode,themes,onSelect}){
     const element = document.createElement("div");
     element.setAttribute("class","dropdown");
 
     const button = createThemeSelect_button();
     element.appendChild(button);
 
-    const items = createThemeSelect_items();
+    const items = createThemeSelect_items(Object.keys(themes));
     element.appendChild(items);
 
     parentNode.appendChild(element);
@@ -26,7 +26,7 @@ function createThemeSelect({parentNode,onSelect}){
     $('.dropdown-menu a').on('click',function(){
         $('.dropdown-toggle').html($(this).html()+'<span class="caret"></span>');
         if(onSelect){
-            onSelect($(this).html());
+            onSelect(themes[$(this).html()]);
         }
     });
 }
@@ -45,20 +45,15 @@ function createThemeSelect_button(){
     element.appendChild(caret);
     return element;
 }
-function createThemeSelect_items(){
+function createThemeSelect_items(items){
     const element = document.createElement("ul");
     element.setAttribute("class","dropdown-menu");
     element.setAttribute("aria-labelledby","dropdownMenu1");
 
-    let item_name = "主题1";
-    let element_li = createThemeSelect_one_item({name:item_name});
-
-    element.appendChild(element_li);
-
-    item_name = "主题2";
-    element_li = createThemeSelect_one_item({name:item_name});
-
-    element.appendChild(element_li);
+    items.forEach(name=>{
+        const element_li = createThemeSelect_one_item({name});
+        element.appendChild(element_li);
+    });
     return element;
 }
 function createThemeSelect_one_item({name}){

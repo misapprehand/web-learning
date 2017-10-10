@@ -1,7 +1,6 @@
 import Input from './input';
 import createThemeSelect from './themeSelect';
 import {createPad,updatePad} from './pad';
-//var layout1 = require('./layout1.json');
 import layout1 from './layout1.json';
 import layout2 from './layout2.json';
 
@@ -82,8 +81,8 @@ function createPage(content){
     ;
 
   const container = document.getElementById("multiplier");
-  createThemeSelect({parentNode:container,onSelect:(select)=>updatePad(container,themes[select])});
-  createPad(container,themes["主题1"]);
+  createThemeSelect({parentNode:container,themes,onSelect:(selectInfo)=>updatePad(container,selectInfo)});
+  createPad(container,Object.values(themes)[0]);
 }
 
 export default createPage;
