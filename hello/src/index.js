@@ -35,3 +35,4 @@ const bootstrapDemo = document.getElementById("bootstrap_entry");
 bootstrapDemo.onclick = function(){
     createBootstrap(content);
 }
+createCalc(content);
