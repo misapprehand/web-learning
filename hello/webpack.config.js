@@ -9,5 +9,6 @@ module.exports = {
     output:{
         path: __dirname,
         filename: '[name]_bundle.js',
-    }
+    },
+    devtool: "source-map"
 };
