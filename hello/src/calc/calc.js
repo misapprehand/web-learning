@@ -1,8 +1,7 @@
 import Input from './input';
 import createThemeSelect from './themeSelect';
 import {createPad, updatePad} from './pad';
-import layout1 from './layout1.json';
-import layout2 from './layout2.json';
+import { requestThemes } from './ajaxClient';
 
 const input = new Input({clearCallback: clearResult});
 // 简单的乘法器
@@ -68,29 +67,6 @@ function createMapFromLayout ({layout, callbacks}) {
   });
   return infoMap;
 }
-
-const themes2 = {
-  '主题1': createMapFromLayout({layout: layout1, callbacks}),
-  '主题2': createMapFromLayout({layout: layout2, callbacks})
-};
-
-const httpRequest = new XMLHttpRequest();
-function requestThemes ({onFinish}) {
-  httpRequest.onreadystatechange = onFinish;
-  const url = 'http://localhost:4000/layouts';
-  httpRequest.open('GET', url);
-  httpRequest.send();
-}
-function layoutsCB({onSuccess,onFail}) {
-  if (httpRequest.readyState === XMLHttpRequest.DONE) {
-    if (httpRequest.status === 200) {
-        console.log('request done: ' + httpRequest.responseText);
-        onSuccess({body:httpRequest.responseText});
-    } else {
-        onFail({status: httpRequest.status});
-    }
-  }
-}
 function createPage (content) {
   content.innerHTML = '<h2>简单乘法器</h2>' +
         '<div id="multiplier">' +
@@ -99,26 +75,22 @@ function createPage (content) {
     ;
 
   const container = document.getElementById('multiplier');
-  requestThemes({onFinish: ()=>{
-      layoutsCB({
-          onSuccess:({body})=>{
-              const jsonArray = JSON.parse(body);
-              console.log("jsonArray=="+JSON.stringify(jsonArray));
-              console.log("jsonArray layout1=="+JSON.stringify(jsonArray[0]));
-              const layout1 = jsonArray[0].content;
-              const layout2 = jsonArray[1].content;
-              const themes = {
-                  '主题1': createMapFromLayout({layout: layout1, callbacks}),
-                  '主题2': createMapFromLayout({layout: layout2, callbacks})
-              };
-              createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
-              createPad(container, Object.values(themes)[0]);
-          },
-          onFail:({status})=>{
-              console.log('request fail');
-          }
-      });
-  }});
+  requestThemes({
+        onSuccess:({body})=>{
+                const jsonArray = JSON.parse(body);
+                const layout1 = jsonArray[0].content;
+                const layout2 = jsonArray[1].content;
+                const themes = {
+                    '主题1': createMapFromLayout({layout: layout1, callbacks}),
+                    '主题2': createMapFromLayout({layout: layout2, callbacks})
+                };
+                createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
+                createPad(container, Object.values(themes)[0]);
+            },
+        onFail:({status})=>{
+                console.log('request fail');
+            }
+        });
 }
 
 export default createPage;
