@@ -81,15 +81,13 @@ function requestThemes ({onFinish}) {
   httpRequest.open('GET', url);
   httpRequest.send();
 }
-function layoutsCB() {
+function layoutsCB({onSuccess,onFail}) {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
         console.log('request done: ' + httpRequest.responseText);
-        const jsonArray = JSON.parse(httpRequest.responseText);
-        console.log("jsonArray=="+JSON.stringify(jsonArray));
-        console.log("jsonArray layout1=="+JSON.stringify(jsonArray[0]));
+        onSuccess({body:httpRequest.responseText});
     } else {
-      console.log('request fail');
+        onFail({status: httpRequest.status});
     }
   }
 }
@@ -102,9 +100,19 @@ function createPage (content) {
 
   const container = document.getElementById('multiplier');
   requestThemes({onFinish: ()=>{
-      layoutsCB();
-      createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
-      createPad(container, Object.values(themes)[0]);
+      layoutsCB({
+          onSuccess:({body})=>{
+              const jsonArray = JSON.parse(body);
+              console.log("jsonArray=="+JSON.stringify(jsonArray));
+              console.log("jsonArray layout1=="+JSON.stringify(jsonArray[0]));
+
+              createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
+              createPad(container, Object.values(themes)[0]);
+          },
+          onFail:({status})=>{
+              console.log('request fail');
+          }
+      });
   }});
 }
 
