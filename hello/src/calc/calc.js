@@ -69,7 +69,7 @@ function createMapFromLayout ({layout, callbacks}) {
   return infoMap;
 }
 
-const themes = {
+const themes2 = {
   '主题1': createMapFromLayout({layout: layout1, callbacks}),
   '主题2': createMapFromLayout({layout: layout2, callbacks})
 };
@@ -105,7 +105,12 @@ function createPage (content) {
               const jsonArray = JSON.parse(body);
               console.log("jsonArray=="+JSON.stringify(jsonArray));
               console.log("jsonArray layout1=="+JSON.stringify(jsonArray[0]));
-
+              const layout1 = jsonArray[0].content;
+              const layout2 = jsonArray[1].content;
+              const themes = {
+                  '主题1': createMapFromLayout({layout: layout1, callbacks}),
+                  '主题2': createMapFromLayout({layout: layout2, callbacks})
+              };
               createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
               createPad(container, Object.values(themes)[0]);
           },
