@@ -84,7 +84,10 @@ function requestThemes ({onFinish}) {
 function layoutsCB() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
-      console.log('request done: ' + httpRequest.responseText);
+        console.log('request done: ' + httpRequest.responseText);
+        const jsonArray = JSON.parse(httpRequest.responseText);
+        console.log("jsonArray=="+JSON.stringify(jsonArray));
+        console.log("jsonArray layout1=="+JSON.stringify(jsonArray[0]));
     } else {
       console.log('request fail');
     }
