@@ -57,8 +57,8 @@ const callbacks = {
   'mul--': {cb: opClickHandler},
   'mul-*': {cb: opClickHandler},
   'mul-／': {cb: opClickHandler},
-  'mul-=': { cb: resultClickHandler},
-  'mul-clr': { cb: clearClickHandler}
+  'mul-=': {cb: resultClickHandler},
+  'mul-clr': {cb: clearClickHandler}
 };
 function createMapFromLayout ({layout, callbacks}) {
   const infoMap = new Map();
@@ -73,6 +73,23 @@ const themes = {
   '主题1': createMapFromLayout({layout: layout1, callbacks}),
   '主题2': createMapFromLayout({layout: layout2, callbacks})
 };
+
+const httpRequest = new XMLHttpRequest();
+function requestThemes ({onFinish}) {
+  httpRequest.onreadystatechange = onFinish;
+  const url = 'http://localhost:4000/layouts';
+  httpRequest.open('GET', url);
+  httpRequest.send();
+}
+function layoutsCB() {
+  if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    if (httpRequest.status === 200) {
+      console.log('request done: ' + httpRequest.responseText);
+    } else {
+      console.log('request fail');
+    }
+  }
+}
 function createPage (content) {
   content.innerHTML = '<h2>简单乘法器</h2>' +
         '<div id="multiplier">' +
@@ -81,6 +98,7 @@ function createPage (content) {
     ;
 
   const container = document.getElementById('multiplier');
+  requestThemes({onFinish: layoutsCB});
   createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
   createPad(container, Object.values(themes)[0]);
 }
