@@ -101,9 +101,11 @@ function createPage (content) {
     ;
 
   const container = document.getElementById('multiplier');
-  requestThemes({onFinish: layoutsCB});
-  createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
-  createPad(container, Object.values(themes)[0]);
+  requestThemes({onFinish: ()=>{
+      layoutsCB();
+      createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
+      createPad(container, Object.values(themes)[0]);
+  }});
 }
 
 export default createPage;
