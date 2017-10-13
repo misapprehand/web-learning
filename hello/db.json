@@ -1,0 +1,6 @@
+{
+  "layouts": [
+    { "id": 1, "title": "主题1", "author": "typicode" },
+    { "id": 2, "title": "主题2", "author": "typicode" }
+  ]
+}
