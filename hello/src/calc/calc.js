@@ -76,21 +76,21 @@ function createPage (content) {
 
   const container = document.getElementById('multiplier');
   requestThemes({
-        onSuccess:({body})=>{
-                const jsonArray = JSON.parse(body);
-                const layout1 = jsonArray[0].content;
-                const layout2 = jsonArray[1].content;
-                const themes = {
-                    '主题1': createMapFromLayout({layout: layout1, callbacks}),
-                    '主题2': createMapFromLayout({layout: layout2, callbacks})
-                };
-                createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
-                createPad(container, Object.values(themes)[0]);
-            },
-        onFail:({status})=>{
-                console.log('request fail');
-            }
-        });
+    onSuccess: ({body}) => {
+      const jsonArray = JSON.parse(body);
+      const layout1 = jsonArray[0].content;
+      const layout2 = jsonArray[1].content;
+      const themes = {
+        '主题1': createMapFromLayout({layout: layout1, callbacks}),
+        '主题2': createMapFromLayout({layout: layout2, callbacks})
+      };
+      createThemeSelect({parentNode: container, themes, onSelect: (selectInfo) => updatePad(container, selectInfo)});
+      createPad(container, Object.values(themes)[0]);
+    },
+    onFail: ({status}) => {
+      console.log('request fail');
+    }
+  });
 }
 
 export default createPage;
