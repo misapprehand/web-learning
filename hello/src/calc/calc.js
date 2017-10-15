@@ -77,7 +77,7 @@ function createPage (content) {
   const container = document.getElementById('multiplier');
   requestThemes({
     onSuccess: ({body}) => {
-      const jsonArray = JSON.parse(body);
+      const jsonArray = body;
       const themes = {};
 
       for (let item of jsonArray) {
