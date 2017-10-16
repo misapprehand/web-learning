@@ -5,24 +5,64 @@ import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 
 function entries () {
-  const itemHref = 'src/html_element/html_element_category.html';
-  const itemText = 'HTML元素分类';
+  const items = [
+    {
+      'id': 'htmlCategory',
+      'href': 'src/html_element/html_element_category.html',
+      'text': 'HTML元素分类'
+    },
+    {
+      'id': 'htmlAttribute',
+      'href': 'src/html_element/html_element_attribute.html',
+      'text': 'HTML元素属性'
+    },
+    {
+      'id': 'htmlText',
+      'href': 'src/html_text/html_text.html',
+      'text': 'HTML文本'
+    },
+    {
+      'id': 'htmlImage',
+      'href': 'src/html_image/html_image.html',
+      'text': 'HTML图片'
+    },
+    {
+      'id': 'cssDemo',
+      'href': 'src/css_demo/html_image.html',
+      'text': 'CSS'
+    },
+    {
+      'id': 'js_basic_entry',
+      'href': '#js_basic',
+      'text': 'JS基础'
+    },
+    {
+      'id': 'calc_entry',
+      'href': '#calc',
+      'text': '计算器'
+    },
+    {
+      'id': 'bootstrap_entry',
+      'href': '#bootstrap',
+      'text': 'Bootstrap Demo'
+    }
+  ];
+  const navItems = (items) => {
+    const navItems = [];
+    for (let item of items) {
+      navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
+    }
+    return navItems;
+  };
   return (
     <div id='main'>
-      <nav>
-        <p><a href={itemHref}>{itemText}</a></p>
-        <p><a href='src/html_element/html_element_attribute.html'>HTML元素属性</a></p>
-        <p><a href='src/html_text/html_text.html'>HTML文本</a></p>
-        <p><a href='src/html_image/html_image.html'>HTML图片</a></p>
-        <p><a href='src/css_demo/css.html'>CSS</a></p>
-        <p id='js_basic_entry'><a href='#js_basic'>JS基础</a></p>
-        <p id='calc_entry'><a href='#calc'>计算器</a></p>
-        <p id='bootstrap_entry'><a href='#bootstrap'>Bootstrap Demo</a></p>
+      <nav>{navItems(items)}
       </nav>
       <article id='content' />
     </div>
   );
 }
+
 function hello () {
   return <h1>Hello,world</h1>;
 }
