@@ -1,4 +1,4 @@
-import { multiply } from '../math/math.js';
+import Math from '../math/math.js';
 
 function createItems (node) {
   const root = node;
@@ -38,7 +38,7 @@ function createJsBasic (node) {
   var mulDiv = document.querySelector('#mul_div');
   var num1 = 1;
   var num2 = 2;
-  mulDiv.innerHTML = num1 + '*' + num2 + '=' + multiply(num1, num2);
+  mulDiv.innerHTML = num1 + '*' + num2 + '=' + Math.multiply(num1, num2);
 
     // 点击事件
     // document.querySelector('html').onclick = function() {
