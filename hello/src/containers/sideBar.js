@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import createJsBaisc from '../js_basic/hello';
 
 const items = [
   {
@@ -42,11 +43,28 @@ const items = [
     'text': 'Bootstrap Demo'
   }
 ];
+function JSBasic (props) {
+  const {id, href, text} = props.item;
+  function handleClick (e) {
+    e.preventDefault();
+    const parent = document.getElementById('content');
+    createJsBaisc(parent);
+  }
+  return <p id={id} key={id}><a href={href} onClick={handleClick}>{text}</a></p>;
+}
 function NavSideBar (props) {
   const navItems = (items) => {
     const navItems = [];
+    const createItem = ({id, href, text}) => {
+      return <p id={id} key={id}><a href={href}>{text}</a></p>;
+    };
     for (let item of items) {
-      navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
+      if (item.id === 'js_basic_entry') {
+        navItems.push(<JSBasic item={item} />);
+      } else {
+        // navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
+        navItems.push(createItem({id: item.id, href: item.href, text: item.text}));
+      }
     }
     return navItems;
   };

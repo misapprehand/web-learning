@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createJsBaisc from './js_basic/hello';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 import SideBar from './containers/sideBar';
@@ -20,10 +19,6 @@ ReactDOM.render(
 );
 
 const content = document.getElementById('content');
-const js_basic = document.getElementById('js_basic_entry');
-js_basic.onclick = function () {
-  createJsBaisc(content);
-};
 const calc = document.getElementById('calc_entry');
 calc.onclick = function () {
   createCalc(content);
