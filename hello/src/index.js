@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import createJsBaisc from './js_basic/hello';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
+import SideBar from './containers/sideBar';
 
 function NavSideBar (props) {
   return <nav>{ props.items }</nav>;
@@ -59,7 +60,7 @@ function entries () {
   };
   return (
     <div id='main'>
-      <NavSideBar items={navItems(items)} />
+      <SideBar items={navItems(items)} />
       <article id='content' />
     </div>
   );
