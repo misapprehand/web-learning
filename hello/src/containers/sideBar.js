@@ -24,7 +24,7 @@ const items = [
   },
   {
     'id': 'cssDemo',
-    'href': 'src/css_demo/html_image.html',
+    'href': 'src/css_demo/css.html',
     'text': 'CSS'
   },
   {
