@@ -5,10 +5,12 @@ import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 
 function entries () {
+  const itemHref = 'src/html_element/html_element_category.html';
+  const itemText = 'HTML元素分类';
   return (
     <div id='main'>
       <nav>
-        <p><a href='src/html_element/html_element_category.html'>HTML元素分类</a></p>
+        <p><a href={itemHref}>{itemText}</a></p>
         <p><a href='src/html_element/html_element_attribute.html'>HTML元素属性</a></p>
         <p><a href='src/html_text/html_text.html'>HTML文本</a></p>
         <p><a href='src/html_image/html_image.html'>HTML图片</a></p>
