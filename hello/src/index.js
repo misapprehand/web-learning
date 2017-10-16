@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import createJsBaisc from './js_basic/hello';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
@@ -19,9 +21,15 @@ function entries () {
                      '</div>';
   return root;
 }
-const root = entries();
-document.body.appendChild(root);
-
+function hello () {
+  return <h1>Hello,world</h1>;
+}
+const root = hello();
+// document.body.appendChild(root);
+ReactDOM.render(
+  root,
+  document.getElementById('root')
+);
 const content = document.getElementById('content');
 const js_basic = document.getElementById('js_basic_entry');
 js_basic.onclick = function () {

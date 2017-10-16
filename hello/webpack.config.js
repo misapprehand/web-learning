@@ -10,5 +10,18 @@ module.exports = {
     path: __dirname,
     filename: '[name]_bundle.js'
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        include: [
+            path.resolve(__dirname,'src')
+        ]
+      }
+    ]
+  }
 };
