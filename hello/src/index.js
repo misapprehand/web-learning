@@ -4,6 +4,9 @@ import createJsBaisc from './js_basic/hello';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 
+function NavSideBar (props) {
+  return <nav>{ props.items }</nav>;
+}
 function entries () {
   const items = [
     {
@@ -56,17 +59,11 @@ function entries () {
   };
   return (
     <div id='main'>
-      <nav>{navItems(items)}
-      </nav>
+      <NavSideBar items={navItems(items)} />
       <article id='content' />
     </div>
   );
 }
-
-function hello () {
-  return <h1>Hello,world</h1>;
-}
-// const root = hello();
 const root = entries();
 ReactDOM.render(
   root,
