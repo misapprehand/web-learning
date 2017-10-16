@@ -2,19 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
-import SideBar from './containers/sideBar';
+import App from './containers/App';
 
-function entries () {
-  return (
-    <div id='main'>
-      <SideBar />
-      <article id='content' />
-    </div>
-  );
-}
-const root = entries();
 ReactDOM.render(
-  root,
+  <App />,
   document.getElementById('root')
 );
 
