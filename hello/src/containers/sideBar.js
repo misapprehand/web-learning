@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import createJsBaisc from '../js_basic/hello';
+import {
+    Link
+} from 'react-router-dom';
 
 const items = [
   {
@@ -43,6 +46,7 @@ const items = [
     'text': 'Bootstrap Demo'
   }
 ];
+/*
 function JSBasic (props) {
   const {id, href, text} = props.item;
   function handleClick (e) {
@@ -51,6 +55,10 @@ function JSBasic (props) {
     createJsBaisc(parent);
   }
   return <p id={id} key={id}><a href={href} onClick={handleClick}>{text}</a></p>;
+} */
+function JSBasic (props) {
+  const {id, href, text} = props.item;
+  return <p id={id} key={id}><Link to='/jsBasic'>{text}</Link></p>;
 }
 function NavSideBar (props) {
   const navItems = (items) => {
@@ -60,7 +68,7 @@ function NavSideBar (props) {
     };
     for (let item of items) {
       if (item.id === 'js_basic_entry') {
-        navItems.push(<JSBasic item={item} />);
+        navItems.push(<JSBasic key={item.id} item={item} />);
       } else {
         // navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
         navItems.push(createItem({id: item.id, href: item.href, text: item.text}));

@@ -3,12 +3,24 @@ import ReactDOM from 'react-dom';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 import App from './containers/App';
+import { JsBasicContainer } from './js_basic/hello.js';
+import Routers from './routers';
 
+const routes = [
+  { path: '/',
+    component: App,
+    routes: [
+      { path: '/jsBasic',
+        component: JsBasicContainer
+      }
+    ]
+  }
+];
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <Routers routes={routes} />,
+    document.getElementById('root')
 );
-
+/*
 const content = document.getElementById('content');
 const calc = document.getElementById('calc_entry');
 calc.onclick = function () {
@@ -19,3 +31,4 @@ bootstrapDemo.onclick = function () {
   createBootstrap(content);
 };
 createCalc(content);
+*/

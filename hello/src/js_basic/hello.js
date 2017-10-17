@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Math from '../math/math.js';
 
 function createItems (node) {
@@ -54,4 +55,12 @@ function createJsBasic (node) {
     result.innerHTML = result.innerHTML + '2';
   };
 }
+class JsBasicContainer extends Component {
+  render () {
+    return (
+      <div>JSBasic</div>
+    );
+  }
+}
 export default createJsBasic;
+export { JsBasicContainer };

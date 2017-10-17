@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import SideBar from '../containers/sideBar';
+import {
+    RouteWithSubRoutes
+} from '../routers';
 
 class App extends Component {
   render () {
@@ -7,7 +10,9 @@ class App extends Component {
       <div id='main'>
         <SideBar />
         <article id='content' >
-          {this.props.children}
+          {this.props.routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+            ))}
         </article>
       </div>
     );
