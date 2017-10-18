@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import Math from '../math/math';
 
 class JsBasicContainer extends Component {
   render () {
+    const Mul = ({num1, num2}) => {
+      return `${num1}+${num2}=${Math.multiply(num1, num2)}`;
+    };
+
     return (
       <div>
-        <h2 id='hello_title'>Hello 标题</h2>
+        <h2 id='hello_title'>Hello 标题
+                    <p>Hello!</p>
+        </h2>
         <h2>自定义函数</h2>
-        <div id='hello_div' />
+        <div id='hello_div' >hello</div>
         <h2>自定义函数2</h2>
-        <div id='mul_div' />
+        <div id='mul_div' >
+          <Mul num1={1} num2={2} />
+        </div>
         <h2>点按钮，显示数字</h2>
         <div id='number_btn_div'>
           <input type='button' id='1' value='1' />
