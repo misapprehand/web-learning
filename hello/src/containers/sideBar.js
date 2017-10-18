@@ -61,20 +61,25 @@ function JSBasic (props) {
   return <p id={id} key={id}><Link to='/jsBasic'>{text}</Link></p>;
 }
 function NavSideBar (props) {
-  const navItems = (items) => {
-    const navItems = [];
-    const createItem = ({id, href, text}) => {
-      return <p id={id} key={id}><a href={href}>{text}</a></p>;
-    };
-    for (let item of items) {
-      if (item.id === 'js_basic_entry') {
-        navItems.push(<JSBasic key={item.id} item={item} />);
-      } else {
-        // navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
-        navItems.push(createItem({id: item.id, href: item.href, text: item.text}));
-      }
-    }
-    return navItems;
+    const navItems = (items) => {
+        const navItems = [];
+        const createItem = ({id, href, text}) => {
+            return <p id={id} key={id}><a href={href}>{text}</a></p>;
+        };
+        for (let item of items) {
+            if (item.id === 'js_basic_entry') {
+               navItems.push(<JSBasic key={item.id} item={item} />);
+            }
+            else if (item.id === 'calc_entry') {
+                const {id, href, text} = item;
+                navItems.push(<p id={id} key={id}><Link to='/calc'>{text}</Link></p>);
+            }
+            else {
+                // navItems.push(<p id={item.id} key={item.id}><a href={item.href}>{item.text}</a></p>);
+                navItems.push(createItem({id: item.id, href: item.href, text: item.text}));
+            }
+        }
+        return navItems;
   };
   return (<nav>{ navItems(props.items) }</nav>);
 }

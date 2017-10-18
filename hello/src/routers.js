@@ -5,8 +5,8 @@ import {
 } from 'react-router-dom';
 
 const RouteWithSubRoutes = (route) => (
-    <Route path={route.path} render={props => (
-        <route.component {...props} routes={route.routes} />
+  <Route path={route.path} render={props => (
+    <route.component {...props} routes={route.routes} />
     )} />
 );
 const Routers = (props) => (
