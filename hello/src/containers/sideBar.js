@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import createJsBaisc from '../js_basic/hello';
 import {
     Link
 } from 'react-router-dom';

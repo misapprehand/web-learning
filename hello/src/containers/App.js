@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SideBar from '../containers/sideBar';
+import SideBar from 'containers/sideBar';
 import {
     RouteWithSubRoutes
-} from '../routers';
+} from 'routers';
 
 class App extends Component {
   render () {

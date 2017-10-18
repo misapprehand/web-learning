@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createCalc from './calc/calc';
-import createBootstrap from './bootstrap_demo/index';
-import Routers from './routers';
+import createCalc from 'calc/calc';
+import createBootstrap from 'bootstrap_demo/index';
+import Routers from 'routers';
 import App from './containers/App';
-import JsBasicContainer from './containers/JsBasicContainer';
-import CalcContainer from './containers/CalcContainer';
+import JsBasicContainer from 'containers/JsBasicContainer';
+import CalcContainer from 'containers/CalcContainer';
 
 const routes = [
   { path: '/',

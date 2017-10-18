@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Math from '../math/math';
+import Math from 'math/math';
 
 class JsBasicContainer extends Component {
   constructor(props){
