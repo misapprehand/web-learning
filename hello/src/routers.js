@@ -1,13 +1,8 @@
 import React from 'react';
 import {
-    App
-} from './containers/App';
-import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
-import { JsBasicContainer } from './containers/jsBasicContainer';
 
 const RouteWithSubRoutes = (route) => (
     <Route path={route.path} render={props => (
