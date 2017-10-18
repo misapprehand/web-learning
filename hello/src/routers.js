@@ -7,11 +7,11 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-import { JsBasicContainer } from './js_basic/hello.js';
+import { JsBasicContainer } from './containers/jsBasicContainer';
 
 const RouteWithSubRoutes = (route) => (
-  <Route path={route.path} render={props => (
-    <route.component {...props} routes={route.routes} />
+    <Route path={route.path} render={props => (
+        <route.component {...props} routes={route.routes} />
     )} />
 );
 const Routers = (props) => (

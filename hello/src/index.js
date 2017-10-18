@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import createCalc from './calc/calc';
 import createBootstrap from './bootstrap_demo/index';
 import App from './containers/App';
-import { JsBasicContainer } from './js_basic/hello.js';
+import JsBasicContainer from './containers/jsBasicContainer';
 import Routers from './routers';
 
 const routes = [
