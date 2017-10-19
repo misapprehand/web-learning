@@ -14,7 +14,7 @@ const Routers = (props) => (
     <div>
       { props.routes.map((route, i) => (
         <RouteWithSubRoutes key={i} {...route} />
-            ))}
+      ))}
     </div>
   </Router>
 );

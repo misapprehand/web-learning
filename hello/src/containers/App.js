@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
-import SideBar from 'containers/sideBar';
 import {
     RouteWithSubRoutes
 } from 'routers';
+import {
+    Route,
+    Switch
+} from 'react-router-dom';
+
+import SideBar from 'containers/sideBar';
+import JsBasicContainer from 'containers/JsBasicContainer';
+import CalcContainer from 'containers/CalcContainer';
+
+const routes = [
+  { path: '/jsBasic',
+    component: JsBasicContainer
+  },
+  { path: '/calc',
+    component: CalcContainer
+  }
+];
 
 class App extends Component {
   render () {
@@ -10,9 +26,12 @@ class App extends Component {
       <div id='main'>
         <SideBar />
         <article id='content' >
-          {this.props.routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-            ))}
+          <Switch>
+            <Route exact path='/' component={JsBasicContainer} />
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+          ))}
+          </Switch>
         </article>
       </div>
     );

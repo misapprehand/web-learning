@@ -4,20 +4,10 @@ import createCalc from 'calc/calc';
 import createBootstrap from 'bootstrap_demo/index';
 import Routers from 'routers';
 import App from './containers/App';
-import JsBasicContainer from 'containers/JsBasicContainer';
-import CalcContainer from 'containers/CalcContainer';
 
 const routes = [
   { path: '/',
-    component: App,
-    routes: [
-      { path: '/jsBasic',
-        component: JsBasicContainer
-      },
-      { path: '/calc',
-        component: CalcContainer
-      }
-    ]
+    component: App
   }
 ];
 ReactDOM.render(
