@@ -13,10 +13,9 @@ module.exports = {
   module: {
     rules: [
         // add your custom rules.
-
-    ],
+    ]
   },
   resolve: {
-        modules: ['node_modules', '../src']
+    modules: ['node_modules', '../src']
   }
 };
