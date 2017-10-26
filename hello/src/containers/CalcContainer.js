@@ -9,8 +9,9 @@ const layouts = require('./calc/layouts.json');
 
 class CalcContainer extends Component {
     state={
-        themes: {},
-        selectedTheme: {}
+        themes:{},
+        selectedTheme: {},
+        result:""
     }
     componentDidMount(){
         requestThemes({
@@ -34,12 +35,14 @@ class CalcContainer extends Component {
             return infoMap;
         }
         const appendResult =(content)=> {
-            let result = document.getElementById('mul-result');
-            result.value += content;
+            this.setState((preState,props)=>({
+                result:preState.result+content
+            }));
         }
         const clearResult= ()=> {
-            let result = document.getElementById('mul-result');
-            result.value = '';
+            this.setState({
+                result:''
+            });
         }
         const buttonClickHandler=(event)=> {
             const value = event.target.value;
@@ -124,9 +127,9 @@ class CalcContainer extends Component {
 
         return (
             <div>
-                <h2>简单乘法器</h2>
+                <h2>简单计算器</h2>
                 <div id='multiplier'>
-                    <input id='mul-result' type='text' className='form-control' readOnly />
+                    <input id='mul-result' type='text' className='form-control' readOnly value={this.state.result}/>
                     { this.createThemeSelect({themes}) }
                     { this.createPad({themes}) }
                 </div>
