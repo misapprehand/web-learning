@@ -20,6 +20,12 @@ module.exports = {
         include: [
           path.resolve(__dirname, 'src')
         ]
+      },
+      {
+        test: /\.json$/,
+        use: [
+          'json-loader'
+        ]
       }
     ]
   },
