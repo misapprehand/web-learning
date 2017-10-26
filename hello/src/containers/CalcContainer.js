@@ -7,8 +7,10 @@ const layouts = require('./calc/layouts.json');
 
 
 class CalcContainer extends Component {
-    createPad=()=> {
-
+    state={
+        selectedTheme: {}
+    }
+    createThemes=({layouts})=>{
         const createMapFromLayout =({layout, callbacks})=> {
             const infoMap = new Map();
             const keys = Object.keys(layout);
@@ -79,24 +81,33 @@ class CalcContainer extends Component {
         for (let item of jsonArray) {
             themes[item.title] = createMapFromLayout({layout: item.content, callbacks});
         }
-
-        return (<Pad infoMap={Object.values(themes)[0]} />);
+        return themes;
+    }
+    createPad=({themes})=> {
+        if(Object.keys(this.state.selectedTheme).length > 0){
+            return (<Pad infoMap={this.state.selectedTheme} />);
+        }
+        else{
+            return (<Pad infoMap={Object.values(themes)[0]} />);
+        }
+    }
+    createThemeSelect=({themes})=>{
+       return (<ThemeSelect
+                    themes={themes}
+                    onSelect={(selectInfo) => this.setState({selectedTheme:selectInfo})} />);
     }
     render () {
-    return (
-      <div>
-        <h2>简单乘法器</h2>
-        <div id='multiplier'>
-          <input id='mul-result' type='text' className='form-control' readOnly />
-          <ThemeSelect
-            themes={{a: '1', b: '2', c: '3'}}
-              onSelect={(selectInfo) => console.log('selectInfo==' + selectInfo)} />
-          {
-              this.createPad()
-          }
-        </div>
-      </div>
-    );
+        const themes = this.createThemes({layouts:layouts});
+        return (
+            <div>
+                <h2>简单乘法器</h2>
+                <div id='multiplier'>
+                    <input id='mul-result' type='text' className='form-control' readOnly />
+                    { this.createThemeSelect({themes}) }
+                    { this.createPad({themes}) }
+                </div>
+            </div>
+        );
   }
 }
 export default CalcContainer;
