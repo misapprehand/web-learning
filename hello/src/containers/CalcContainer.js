@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 import ThemeSelect from './calc/ThemeSelect';
 import Pad from './calc/Pad';
 import Input from './calc/input';
+import {requestThemes} from './calc/ajaxClient';
 
 const layouts = require('./calc/layouts.json');
 
 
 class CalcContainer extends Component {
     state={
+        themes: {},
         selectedTheme: {}
+    }
+    componentDidMount(){
+        requestThemes({
+            onSuccess:({body})=>{
+                const themes = this.createThemes({layouts:body});
+                this.setState({themes:themes});
+            },
+            onFail:({status})=>{
+                console.log('request fail');
+                const themes = this.createThemes({layouts:layouts});
+                this.setState({themes:themes});
+            }});
     }
     createThemes=({layouts})=>{
         const createMapFromLayout =({layout, callbacks})=> {
@@ -83,8 +97,14 @@ class CalcContainer extends Component {
         }
         return themes;
     }
+    isEmpty=(obj)=>{
+      return (Object.keys(obj).length === 0);
+    }
     createPad=({themes})=> {
-        if(Object.keys(this.state.selectedTheme).length > 0){
+        if(this.isEmpty(themes)){
+            return;
+        }
+        if(!this.isEmpty(this.state.selectedTheme)){
             return (<Pad infoMap={this.state.selectedTheme} />);
         }
         else{
@@ -92,12 +112,16 @@ class CalcContainer extends Component {
         }
     }
     createThemeSelect=({themes})=>{
-       return (<ThemeSelect
+        if(this.isEmpty(themes)){
+            return;
+        }
+        return (<ThemeSelect
                     themes={themes}
                     onSelect={(selectInfo) => this.setState({selectedTheme:selectInfo})} />);
     }
     render () {
-        const themes = this.createThemes({layouts:layouts});
+        const themes = this.state.themes;
+
         return (
             <div>
                 <h2>简单乘法器</h2>
