@@ -3,6 +3,7 @@ import ThemeSelect from './calc/ThemeSelect';
 import Pad from './calc/Pad';
 import Input from './calc/input';
 import {requestThemes} from './calc/ajaxClient';
+import _ from 'lodash';
 
 const layouts = require('./calc/layouts.json');
 
@@ -106,7 +107,7 @@ class CalcContainer extends Component {
         return themes;
     }
     isEmpty=(obj)=>{
-      return (Object.keys(obj).length === 0);
+        return _.isEmpty(obj);
     }
     createPad=({themes})=> {
         if(this.isEmpty(themes)){
