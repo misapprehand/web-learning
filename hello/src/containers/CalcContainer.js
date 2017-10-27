@@ -17,12 +17,18 @@ class CalcContainer extends Component {
         requestThemes({
             onSuccess:({body})=>{
                 const themes = this.createThemes({layouts:body});
-                this.setState({themes:themes});
+                this.setState({
+                    themes:themes,
+                    selectedTheme: Object.values(themes)[0]
+                });
             },
             onFail:({status})=>{
                 console.log('request fail');
                 const themes = this.createThemes({layouts:layouts});
-                this.setState({themes:themes});
+                this.setState({
+                    themes:themes,
+                    selectedTheme: Object.values(themes)[0]
+                });
             }});
     }
     createThemes=({layouts})=>{
@@ -73,7 +79,6 @@ class CalcContainer extends Component {
             appendResult(value);
             input.addOperator(value);
         }
-
         const jsonArray = layouts;
         const themes = {};
         const callbacks = {
@@ -107,12 +112,7 @@ class CalcContainer extends Component {
         if(this.isEmpty(themes)){
             return;
         }
-        if(!this.isEmpty(this.state.selectedTheme)){
-            return (<Pad infoMap={this.state.selectedTheme} />);
-        }
-        else{
-            return (<Pad infoMap={Object.values(themes)[0]} />);
-        }
+        return (<Pad infoMap={this.state.selectedTheme} />);
     }
     createThemeSelect=({themes})=>{
         if(this.isEmpty(themes)){
