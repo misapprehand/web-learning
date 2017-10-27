@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    './src/calc/calc': './src/calc/calc.js',
     './index': './src/index.js'
   },
   output: {
