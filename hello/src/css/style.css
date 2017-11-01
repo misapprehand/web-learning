@@ -1,0 +1,49 @@
+html{
+    font-size: 20px;/* 10个像素 */
+    font-family: Open Sans, sans-serif;
+    background-color: #23536F
+}
+body{
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #996363;
+    padding: 0px 100px 20px 20px;
+    border: 8px solid origin;
+    position: absolute;
+}
+h2{
+    margin: 0;
+    padding: 20px 0;
+    color: #454893;
+    text-shadow: 3px 4px 4px black;
+}
+p{
+    color: red;
+    background: lightgray;
+}
+#my-text-margin-id{
+    background: red;
+}
+.font-demo{
+    font-size:32px;
+    margin:10px 100px 10px 200px;
+    color: #090;
+    font-family: Open Sans, sans-serif
+}
+li {
+    font-size: 24px;
+    text-align: center;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+.float-left{
+    float: left;
+    margin-right: 30px;
+
+}
+
+
+
+
