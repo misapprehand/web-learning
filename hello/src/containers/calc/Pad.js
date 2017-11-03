@@ -5,6 +5,7 @@ import {
     ButtonToolbar,
     Button
 } from 'react-bootstrap';
+import shortid from 'shortid';
 
 class Pad extends Component {
     createPad = (infoMap)=>{
@@ -45,7 +46,7 @@ class Pad extends Component {
             return items;
         };
         return (
-            <ButtonToolbar bsClass='btn-group-justified calc-pad'>
+            <ButtonToolbar key={shortid.generate()} bsClass='btn-group-justified calc-pad'>
                 {
                     buttonItems()
                 }
@@ -54,7 +55,7 @@ class Pad extends Component {
     }
     createButtonItemInGroup =({info})=> {
         return (
-            <ButtonGroup>{
+            <ButtonGroup key={shortid.generate()}>{
                 this.createButtonInButtonBar({info})
             }
             </ButtonGroup>

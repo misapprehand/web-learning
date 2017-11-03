@@ -15,7 +15,7 @@ class ThemeSelect extends Component {
     const selectItems = (themes) => {
       const elements = [];
       Object.keys(themes).forEach((name, index) => {
-        elements.push(<MenuItem key={index + name} eventKey={name}><a href='#'>{name}</a></MenuItem>);
+        elements.push(<MenuItem key={index + name} eventKey={name}>{name}</MenuItem>);
       });
       return elements;
     };
