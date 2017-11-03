@@ -14,12 +14,12 @@ import CalcContainer from 'containers/CalcContainer';
 import 'css/main.css';
 
 const routes = [
-    { path: '/jsBasic',
-      component: JsBasicContainer
-    },
-    { path: '/calc',
-      component: CalcContainer
-    }
+  { path: '/jsBasic',
+    component: JsBasicContainer
+  },
+  { path: '/calc',
+    component: CalcContainer
+  }
 ];
 
 class App extends Component {
