@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+    ButtonGroup,
+    ButtonToolbar,
+    Button
+} from 'react-bootstrap';
 
 class Pad extends Component {
     createPad = (infoMap)=>{
@@ -40,27 +45,27 @@ class Pad extends Component {
             return items;
         };
         return (
-           <div type='button' className='btn-group btn-group-justified calc-pad' role='group' >
+            <ButtonToolbar bsClass='btn-group-justified calc-pad'>
                 {
                     buttonItems()
                 }
-           </div>
+            </ButtonToolbar>
         );
     }
     createButtonItemInGroup =({info})=> {
         return (
-                <div className='btn-group' role='group'>{
-                    this.createButtonInButtonBar({info})
-                }
-                </div>
+            <ButtonGroup>{
+                this.createButtonInButtonBar({info})
+            }
+            </ButtonGroup>
         );
     }
 
     createButtonInButtonBar =({info})=> {
         return (
-                <button type='button' className="btn btn-default" value={info.value} onClick={info.cb}>
+            <Button value={info.value} onClick={info.cb}>
                 {info.value}
-                </button>
+            </Button>
         );
     }
 
