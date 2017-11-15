@@ -1,0 +1,193 @@
+#+Title: CSS基础
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="CSS基础">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+
+* 什么是CSS
+  Cascading Style Sheets（CSS）指定文档如何呈现
+
+  - 网页背景色，背景图片，
+  - 文本颜色
+  - 文本，图片的显示位置
+  
+* 为什么用CSS
+ 集中管理html外观样式
+
+* 使用css
+** 修改p的颜色: v1.10
+
+#+BEGIN_SRC css
+  p{
+     color: blue;
+  }
+#+END_SRC
+
+** 引入css
+
+*** 创建 style.css文件
+*** 文件内容
+ #+BEGIN_SRC css
+  p{
+     color: blue;
+  }
+  #+END_SRC
+*** 加入 html文件
+ #+BEGIN_SRC html
+  ...
+  <head>
+    <!-- 忽略无关代码 -->
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- 忽略无关代码 -->
+  </head>
+  #+END_SRC
+
+** CSS规则
+
+  [[./css/css-declaration-small.png]]
+  
+*** 基本规则
+  - 选择符(Selector)
+
+    选择一个或多个样式元素
+
+  - 声明(Declaration)
+
+    声明一个规则，指定样式元素的属性
+
+  - 属性
+
+  - 属性值
+
+     冒号后面，分号结尾
+
+*** 选择符(Selector)
+
+**** 多个样式元素
+
+#+BEGIN_SRC css
+  p,li,h1{
+    color: red;
+  }
+#+END_SRC
+
+* 选择符类型
+*** 元素 
+   html的元素
+*** ID
+   指定ID的元素（ID唯一)
+
+#+BEGIN_SRC html
+   #my-id
+   选择:<p id="my-id">或<a id="my-id">
+#+END_SRC
+*** Class 
+   指定Class的元素(不唯一)
+#+BEGIN_SRC css
+  .my-class
+  选择:<p class="my-id">或<a class="my-id">
+#+END_SRC
+*** 属性
+   页面上拥有指定属性的元素
+#+BEGIN_SRC css
+  img[src]
+  选择:<img src="myimage.png>而不是<img>
+#+END_SRC
+*** 伪类
+   指定的元素，但是需要在特殊的状态
+
+#+BEGIN_SRC example
+      a:hover
+      选择<a>,但是只在鼠标悬停在链接上时。
+#+END_SRC
+
+* 练习:
+ - text margin background to red
+ - font family
+
+#+BEGIN_SRC css
+  访问 www.googlefonts.cn/fonts
+#+END_SRC
+
+ - change <li> font size  
+
+* Box Model : v0.11
+
+[[./css/box-model.png]]
+
+** margin 
+ 外边距
+
+*** 四种位置表示
+  - 1个值
+
+    所有四边
+
+  - 2个值
+
+    垂直|水平
+
+  - 3个值
+
+    上|水平|下
+
+  - 4个值
+
+    上|右|下|左
+
+顺时针
+
+*** 数值单位 : v0.1.12
+  - px
+
+   像素
+
+  - em
+
+   1em 表示1个父元素字体的高度
+  - %
+
+   相对于父元素的百分比
+  - rem
+
+   1rem 表示1个根元素的字体高度
+  - auto
+
+   水平居中   
+
+** padding: v0.1.13
+ 内边距
+
+** width
+  元素宽度
+** background-color
+  背景色
+** color 
+  文字的颜色
+** text-shadow
+#+BEGIN_SRC css
+     text-shadow: 2px 2px 1px black;
+#+END_SRC
+  - 第一个像素值设置了水平方向的阴影值
+  - 第二个像素值设置了垂直方向的阴影值
+  - 第三个像素值设置了阴影模糊的距离（越大的值表示越模糊）
+  - 第四个值设置了阴影的颜色
+
+* 修改整个页面的背景色 : v0.1.14
+* 修改body 
+* 修改标题 
+* 居中显示图片 : v0.1.15
+ - display: block;
+ 把img当成块元素显示

@@ -1,0 +1,98 @@
+#+Title: 开发环境搭建
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="开发环境搭建">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+* IDE
+
+- vscode
+
+ https://code.visualstudio.com/
+
+- atom
+
+ https://atom.io
+
+- webstorm
+
+ https://www.jetbrains.com/webstorm
+
+** vscode   
+*** 插件
+ - HTML Preview
+ - HTML Snippets
+
+* 运行环境
+ - [[http://nodejs.cn/download/][node.js]]
+http://nodejs.cn/download/  
+
+* 配置npm
+** 添加淘宝的npm镜像
+
+#+BEGIN_SRC sh
+registry=https://registry.npm.taobao.org  
+#+END_SRC
+
+** node全局变量
+
+#+BEGIN_SRC sh
+npm install -g 的配置
+#+END_SRC
+
+*** Mac/Linux 配置
+  - 编辑 ~/.npmrc
+
+#+BEGIN_SRC sh
+ cat << EOF > ~/.npmrc
+  prefix=~/.npm-packages
+  registry=https://registry.npm.taobao.org
+  EOF
+#+END_SRC
+  - 编辑 ~/.bash_profile
+
+#+BEGIN_SRC sh
+ cat << EOF >> ~/.bash_profile
+ NPM_PACKAGES="${HOME}/.npm-packages"
+ export PATH="$NPM_PACKAGES/bin:$PATH"
+ EOF
+#+END_SRC
+
+*** Windows(gitbash) 
+  - 编辑 ~/.npmrc
+#+BEGIN_SRC sh
+ cat << EOF > ~/.npmrc
+ prefix=~/.npm-packages
+ registry=https://registry.npm.taobao.org
+ EOF
+#+END_SRC
+
+#+BEGIN_SRC sh
+ cat << EOF >> ~/.bash_profile
+ NPM_PACKAGES="${HOME}/.npm-packages"
+ export PATH="$NPM_PACKAGES:$PATH"
+ EOF
+#+END_SRC
+
+* git
+*** [[https://git-for-windows.github.io/][windows]]
+https://git-for-windows.github.io/
+
+*** 创建一个项目
+
+#+BEGIN_SRC sh
+  mkdir ~/web-learning
+  cd ~/web-learning
+  git init 
+#+END_SRC
+* firefox 或 chrome

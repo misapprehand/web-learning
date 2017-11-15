@@ -1,0 +1,327 @@
+#+Title: web工程
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="web工程">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+* 问题
+** 项目模块化
+** js文件模块复用
+** 自动刷新页面
+** js语法检查
+** js代码混淆 
+** 单页面程序
+   - 减少下载文件
+   - 速度快用户体验更好
+   - 可以写复杂的页面
+
+* 构建工具，任务管理工具
+  gulp,grant
+
+** gulp
+ [[https://gulpjs.com/]]
+
+*** 安装
+
+#+BEGIN_SRC sh
+cd ~/web-learning/hello
+npm install gulp-cli -g
+npm install gulp -D
+touch gulpfile.js
+gulp --help
+#+END_SRC
+** 自动刷新页面 : v0.1.38
+*** 安装 broswer-sync
+#+BEGIN_SRC sh
+  npm install browser-sync -D
+#+END_SRC
+
+*** 编辑 gulpfile.js
+
+#+BEGIN_SRC javascript
+
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
+
+//Static server
+gulp.task('browser-sync',function(){
+    browserSync.init({
+        server:{
+            baseDir: "./"
+        }
+    });
+    //html文件改变，就自动刷新页面
+    gulp.watch("src/**/*.html").on("change",reload);
+});
+
+ #+END_SRC
+
+*** 监听更多文件：v0.1.39
+*** gulp task： v0.1.40
+** 如果简化安装?
+
+#+BEGIN_SRC sh
+  一次安装 gulp和 browserSync
+#+END_SRC  
+** 包管理工具
+  [[https://npmjs.com][npm]]
+
+*** 初始化项目 : v0.1.41
+
+#+BEGIN_SRC javascript
+  npm init
+#+END_SRC  
+
+*** 添加gulp和browserSync : v0.1.42
+*** package.json介绍
+  - main 
+    工程的入口
+
+  - dependencies
+
+    正式代码使用的依赖库。
+
+  - devDependencies
+
+    测试代码，代码处理工具等辅助库
+
+  - scripts : v0.1.43
+   
+    脚本
+
+#+BEGIN_SRC javascript
+  npm start
+#+END_SRC  
+
+#+BEGIN_SRC javascript
+  npm run hello
+#+END_SRC  
+
+** js文件模块复用
+  
+  把math.js模块化
+
+*** 导入／导出模块
+#+BEGIN_SRC js
+  //默认导出函数
+  export default function(){ ... }
+  //默认导出class
+  export default class(){ ... }
+  //命名导出一个一定义的函数
+  export { someFunction }
+  //命名导出一个常数
+  export const foo = 2;
+#+END_SRC
+
+#+BEGIN_SRC js
+  //导入默认值
+  import defaultMember from 'module-name'；
+  //导入模块里所有导出值
+  import * as name from 'module-name';
+  //导入模块里某一个导出值
+  import { member } from 'module-name';
+  //导入模块里某一个导出值，并重命名
+  import { member as alias} from 'module-name';
+#+END_SRC
+  
+  - babel
+
+** 打包工具 : v0.1.44
+   webpack
+*** 安装  
+#+BEGIN_SRC sh
+  npm install --save-dev webpack@2
+#+END_SRC
+
+*** babel
+
+#+BEGIN_SRC sh
+  npm install babel-loader babel-core babel-preset-es2015 --save-dev 
+#+END_SRC
+
+*** 编写webpack.config.js
+
+#+BEGIN_SRC javascript
+
+const path = require('path');
+
+module.exports = {
+    entry: './src/js_basic/hello.js',
+    output:{
+        filename: 'hello_bundle.js',
+        path: path.resolve(__dirname, 'src/js_basic')
+    }
+};
+#+END_SRC
+
+*** 改写 math.js
+*** 改写 hello.js
+*** 改写 js_basic.html
+*** 计算器使用math 模块: v0.1.45
+
+* 改成单页面程序
+** 修改index.html,添加一个入口: v0.1.46
+** 所有入口加到index.js: v0.1.47
+** js变化，自动编译: v0.1.48
+** js_basic.html的功能移到hello.js: v0.1.49
+** js_basic不用js_basic.html: v0.1.50
+
+ - 闭包
+
+  [[./Javascript高级.org::闭包 closure : v0.1.50][闭包 closure : v0.1.50]]
+
+** 修改页面上的undefined: v0.1.51
+** js_basic显示在另一个div里，保留各个模块入口:  v0.1.52
+** 分列布局，侧边栏导航 : v0.1.58
+ - CSS 分列
+   [[./CSS高级.org::*float][float]]
+** 导航栏美化: v0.1.59
+ - CSS 命名规范 : v0.1.59
+   [[./CSS高级.org::*CSS 命名规范][CSS 命名规范]]
+ - CSS 模块化 : v0.1.60
+   [[./CSS高级.org::*CSS 模块化][CSS 模块化]]
+
+** calc 换成单页面: v0.1.61 
+** calc 布局改善: 
+  - 用 ul，li改善: v0.1.62 
+  - css flexbox 水平: v0.1.63
+  - css flexbox 垂直: v0.1.64
+  - 用 flex 改善计算器布局: v0.1.65
+** flex 改写首页: v0.1.66
+   [[./CSS高级.html][CSS高级-flexbox]]
+** calc 添加+: v0.1.67
+** calc 添加/,-的功能: v0.1.68
+** calc 把输入部分都有 inputXXX函数封装: v0.1.69
+** calc input的部分分离出模块: v0.1.70
+  - ES6 import 命名空间
+  [[./Javascript高级.html][Javascript高级-ES6]]
+** calc 添加单元测试: v0.1.72
+   [[单元测试 : v0.1.72]]
+
+** calc 能处理多位数
+*** 输入部分
+  - ES6 let/const,解构:v0.1.71
+  [[./Javascript高级.html][Javascript高级-ES6]]
+*** 重构input，移除input的函数前缀: v0.1.73
+*** 第一个数字支持多位数: v0.1.74
+*** 实现完整的多位数计算公式: v0.1.75
+*** 添加输入结束函数: v0.1.76
+*** Input 改成类
+  - JS 类 : v0.1.77,v0.1.78
+  [[./Javascript高级.html][Javascript高级-Class]]
+*** math.js改成类: v0.1.79
+  - JS类静态函数： v0.1.79
+  [[./Javascript高级.html][Javascript高级-Class]]
+** calc 一次计算完成后，再输入数字，先清输入栏: v0.1.80
+  - JS构造函数，输入参数
+** calc 一次计算完成后，再输入=,清空输入栏: v0.1.81
+** calc 把数字计算放到 Input类中 
+  - MVC : v0.1.82
+  [[./Javascript高级.html][Javascript高级-MVC]]
+** 为Input类添加更多测试用例: v0.1.83
+** 为Input类setup/teardown: v0.1.84
+** 使用bootstrap : v0.1.85
+   [[./CSS高级.html][CSS高级-Bootstrap]]
+** 按钮应用bootstrap : v0.1.86
+** bootstrap demo 添加input readonly : v0.1.87
+** input 显示计算公式: v0.1.88
+** 绘制button bar: v0.1.89
+** 用bootstrap button bar重写界面 : v0.1.90
+** 重构,获取按钮标题: v0.1.91
+** 给按钮添加click函数: v0.1.92
+** 重构，清除代码: v0.1.93
+** 添加另一种键盘布局: v0.1.94
+** 添加选择布局的下拉菜单界面: v0.1.95
+** 分拆出选择主题界面和键盘界面: v0.1.96
+** 键盘的配置分拆成layout表和callbacks表: v0.1.97
+** 键盘的配置layout表改成json数据: v0.1.98
+    [[./Javascript高级.html][Javascript高级-JSON]]
+** 加载json文件来改变键盘的配置layout表: v0.1.99
+** 把themes作为创建主题选择控件的参数: v0.1.100
+** 方便调试，首页缺省加载计算器，webpack添加devtool: v0.1.101
+** 使用网络接口获取layout
+   - http协议
+    [[./Javascript高级.html][Javascript高级-HTTP协议]]
+   - Ajax
+    [[./Javascript高级.html][Javascript高级-Ajax]]
+** 配置一个服务器: v1.0.102
+*** 安装 json-server
+#+BEGIN_SRC javascript
+   npm install --save-dev json-server
+#+END_SRC
+*** 配置数据库文件
+  创建文件 db.json
+#+BEGIN_SRC sh
+  {
+    "layouts": [
+      { "id": 1, "title": "主题1" }，
+      { "id": 2, "title": "主题2" }
+    ]
+  }
+#+END_SRC
+*** 在package.json添加
+#+BEGIN_SRC sh
+  "scripts":{
+    "mock": "json-server --watch ./db.json --port 4000"
+  }
+#+END_SRC
+*** 启动
+#+BEGIN_SRC sh
+  npm run mock
+#+END_SRC
+
+*** 浏览器访问localhost:4000/layouts
+** 加入ajax,从网络获取layouts : v0.1.103
+** 解析网络返回的layout信息           : v0.1.104
+** 网络请求回调函数里创建主题选择和键盘界面: v0.1.105
+** 网络请求成功，失败分别用回调函数处理，成功时创建界面: v0.1.106
+** 根据网络返回的layout，创建主题列表 : v0.1.107
+** 分拆网络请求模块，清理代码 : v0.1.108
+** 根据网络返回值设置主题的选择标题: v0.1.109
+** 添加另一种键盘布局: v0.1.110
+** 用JQuery简化网络调用: v0.1.111
+
+* 单元测试 : v0.1.72
+** 安装
+*** jest 
+#+BEGIN_SRC javascript
+npm install --save-dev jest
+#+END_SRC
+
+** bable-jest
+#+BEGIN_SRC javascript
+npm install --save-dev babel-jest jest
+#+END_SRC
+
+** es6
+#+BEGIN_SRC javascript
+npm install --save-dev babel-preset-env
+#+END_SRC
+
+#+BEGIN_SRC javascript
+//添加 .babelrc配置文件
+cd ~/web-learning/hello
+cat < EOF > .babelrc
+    {
+      "presets": ["es2015"]
+    }
+    EOF
+#+END_SRC
+
+** Setup/Teardown : v0.1.84
+*** Setup
+  每个测试用例运行前都有执行的初始化函数
+*** Teardow
+  每个测试用例运行完成后都有执行的函数

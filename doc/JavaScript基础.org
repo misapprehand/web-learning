@@ -1,0 +1,198 @@
+#+Title: JS基础
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="JS基础">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+* JavaScript?
+  
+  为网页添加交互性
+
+** 功能
+ - 轮播，相册，浮动布局
+ - 按钮点击事件
+ - 2d,3d动画
+ - 数据库应用
+
+** 工具扩展
+ javascript的工具包扩展功能
+
+*** 浏览器应用编程接口(api) 
+  - 动态编写html和css
+  - 抓取控制用户摄像头的数据流
+  - 操作3d图像和音频样品
+*** 第三方APIs集成
+  - 地图
+*** 应用第三方框架和库到HTML
+* Hello : v0.1.16
+** 创建 js文件
+** 引入 html
+  - 加载的位置
+
+#+BEGIN_SRC html  
+<body>的最后
+#+END_SRC
+
+* 变量
+** 定义变量
+
+#+BEGIN_SRC js
+  var myVariable = 'hello';
+#+END_SRC
+
+** 数据类型
+*** String
+ - 例
+
+#+BEGIN_SRC js
+  var strVariable = 'Hello';
+#+END_SRC
+ 
+  -单引号和双引号:
+
+#+BEGIN_SRC js
+   例： <a href="#" onclick="alert('Clicked!');">Click Me!</a>
+   参考: https://stackoverflow.com/questions/2373074/single-vs-double-quotes-vs
+#+END_SRC
+
+*** Number
+#+BEGIN_SRC js
+  var intVariable = 10;
+  var doubleVariable = 10.1;
+#+END_SRC
+
+*** Boolean
+ - 例
+
+#+BEGIN_SRC js
+  var booleanVar = true;
+  var anotherBooleanVar = false;
+#+END_SRC
+
+ - False 值
+
+#+BEGIN_SRC html
+  false
+  undefined
+  null
+  0
+  NaN
+  ""   
+#+END_SRC
+
+ 
+*** Array
+#+BEGIN_SRC js
+  var arrayVar = [1,'H','ello',2];
+  访问: arrayVar[0]
+  数组里的元素类型不必相同
+#+END_SRC
+
+*** Object
+  任何东西都是对象，函数也是
+#+BEGIN_SRC js
+  var objVar = document.querySelector('h1');
+#+END_SRC
+
+* 注释
+#+BEGIN_SRC js
+  ／*
+     多行注释
+   *／
+  // 单行注释
+#+END_SRC
+  
+* 运算符
+** 加/连接 
+ 相加数字，或连接字符串
+#+BEGIN_SRC js
+   1+2;
+   "Hello"+"!!!";
+#+END_SRC
+
+*** 减，乘，除
+#+BEGIN_SRC js
+  9-3;
+  8*2;
+  12/4;
+#+END_SRC
+
+*** 赋值  
+ 给变量赋值
+#+BEGIN_SRC js
+  var myVar = ’Hello';
+#+END_SRC
+
+*** 相等
+ - 比较数字
+ 
+#+BEGIN_SRC js
+  var intVar1 = 3；
+  intVar1 === 4;  ／/false
+  intVar1 === 3;  //true
+  intVar1 !== 4;  //true
+#+END_SRC
+
+ - 比较字符串
+#+BEGIN_SRC js
+  var stringVar1 = 'hello'；
+  stringVar1 === 'hello'; //true
+  stringVar1 === 'he'; //false
+  stringVar1 !== 'hello'; //false
+#+END_SRC
+
+* 函数
+  - 内置函数
+
+#+BEGIN_SRC js
+  alert('hello')
+  document.querySelector('someSelector');
+#+END_SRC
+
+[[https://developer.mozilla.org/en-US/docs/Web/API][web API文档]]
+
+  - 自定义函数 : v0.1.17
+  - 乘法函数: v0.1.18  
+* 事件
+ 网页交互
+** 点击事件: v0.1.19
+#+BEGIN_SRC js
+document.querySelector('html').onclick = function() {
+    alert('Hello Event!');
+}
+#+END_SRC
+
+** 回调函数(callback)
+ 保存下来，以后使用
+
+* 实现一个计算器
+** How to debug
+** 点击按钮，显示数字 : v0.1.20
+** 添加另一个数字按钮 : v0.1.21
+** 简单的乘法器 : v0.1.22
+** 整理代码: v0.1.23
+** 添加一个清除按钮: v0.1.24
+** 遍历添加按钮: v0.1.25
+** 添加 按钮"3" : v0.1.26
+** 添加 按钮"4" : v0.1.27
+** 用函数添加所有数字按钮: v0.1.28
+** Map  : v0.1.29
+   使用 map 重构创建 buttons
+** 添加更多的数字按钮: v0.1.30
+** 初步美化布局: v0.1.31
+** 数字按钮分两行: v0.1.32
+** js 创建“=”和“清除”按钮: v0.1.33
+** 合并create_button和create_function_button: v0.1.34
+   函数参数默认值
+

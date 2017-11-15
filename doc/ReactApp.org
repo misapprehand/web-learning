@@ -1,0 +1,84 @@
+#+Title: React App
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="ReactApp">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+* React App
+ 把Hello项目改成React项目
+
+* hello.js功能改写JsBasicContainer
+** hello.js createItem部分改成JSX : v0.1.123
+** 改写createJsBasic中内容: v0.1.124 
+    - ES6 string template
+    [[./JavaScript高级.org::*String template][String template]]
+
+** 改写事件响应和Result部分
+    - React State
+    [[./React.org::State][State]]
+
+* 把Calc改成React Component
+** 添加CalcContainer.stories 到 storybook : v0.1.131 
+** 把ThemeSelect改成React Component : v0.1.132
+*** PropTypes Typecheck
+   [[./React.org::*PropTypes类型检查][PropTypes类型检查]]
+   
+*** 添加bootstrap
+   - DOM 和 VDOM
+   [[./JavaScript高级.org::*DOM 和 VDOM][DOM 和 VDOM]]
+
+   - Component Lifestyle
+   [[./React.org::*生命周期][生命周期]]
+** 实现ThemeSelect的功能，并在Calc使用: v0.1.133
+** 修改Pad 改成 React Component
+*** 添加Pad story                       :v0.1.134
+*** 在Pad story里添加测试数据 layout.json :v0.1.134
+*** 先把createXXX函数挪到class Pad里 : v0.1.134
+*** json-loader读取layout.json文件  : v0.1.134
+*** 添加Input和按钮点击响应          : v0.1.135
+*** 实现ThemeSelect和Pad布局联动    : v0.1.136
+*** 添加ajaxClient，用state更新Result的显示: v0.1.137
+** 使用 create react app : v0.1.140 
+*** 安装
+*** 创建新项目 react-hello
+*** 删除webpack.config.js
+*** 根据react-hello的package.json修改hello的package.json
+**** start/test/build
+**** 绝对地址导入模块
+
+#+BEGIN_SRC :javascript
+   npm install --save-dev cross-env
+#+END_SRC
+
+#+BEGIN_SRC :javascript
+  "start": "cross-env NODE_PATH=./src react-scripts start"
+#+END_SRC
+**** index.html移到public/
+**** 安装 bootstrap@3
+**** 安装 jquery
+**** 移动css到src/
+**** css文件导入对应文件
+**** 移除不相干文件 : v0.1.141
+  - gulp
+  - browser-sync
+  - webpack
+  - jest
+  - 删除 .babelrc
+**** 使用 create react app创建的public/index.html
+**** 解决主题菜单不响应按钮的问题
+** 使用react-bootstrap
+*** 安装 react-bootstrap
+*** 改写ThemeSelect的dropdown : v0.1.143
+*** 改写Pad ： v0.1.144
+*** 去除index.html的jquery导入和index.js的bootstrap.js导入: v0.1.145

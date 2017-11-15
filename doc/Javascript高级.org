@@ -1,0 +1,349 @@
+#+Title: JS高级
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="JS高级">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+* 闭包 closure : v0.1.50
+** 概念
+
+#+BEGIN_SRC javascript
+  function init(){
+    var name = "hello";
+    function showName(){ //使用父域的变量
+      alert(name);
+    }
+    showName();
+  }
+  init();
+#+END_SRC
+
+** 应用举例
+#+BEGIN_SRC js
+  function greetSomebody(greet){
+    return function (name){
+      alert(greet+" "+name+"!");
+    };
+  }
+  var sayHello = greetSomebody("hello");
+  sayHello("mike");
+
+  var sayHowAreYou = greetSomebody("how are you");
+  sayHowAreYou("mike");
+#+END_SRC
+
+* ES6
+** let/const : v0.1.71
+ - var 作用域
+#+BEGIN_SRC sh
+
+function l1(){
+    var i = "l1";
+    function l2(){
+        console.log("i=="+i);
+        if(1){
+            var i = "l2";
+            console.log("i=="+i);   
+        }
+    }
+    l2();
+}
+l1();
+
+//输出
+i==undefined
+i==l2
+#+END_SRC
+
+#+BEGIN_SRC sh
+var number = [1,2,3,4];
+var funcs = [];
+for(var i=0;i<number.length;i++){
+    funcs.push(function(){
+        console.log(number[i]);
+    });
+}
+funcs[0]();
+//输出
+undefined
+#+END_SRC
+
+** 解构 destructuring : v0.1.71
+ - 数组解构 
+
+#+BEGIN_SRC js
+  var first = someArray[0];
+  var second = someArray[1];
+  var third = someArray[3];
+  //解构
+  var [ first,second,third ] = someArray;
+
+#+END_SRC
+
+ - 对象
+#+BEGIN_SRC js
+  var { foo, bar } = { foo: "lorem", bar: "ipsum" };
+  console.log(foo); //显示 "lorem"
+  console.log(bar); //显示 "ipsum"
+#+END_SRC
+
+** import module : v0.1.70
+
+#+BEGIN_SRC js
+  //默认导出函数
+  export default function(){ ... }
+  //默认导出class
+  export default class(){ ... }
+  //命名导出一个一定义的函数
+  export { someFunction }
+  //命名导出一个常数
+  export const foo = 2;
+#+END_SRC
+
+#+BEGIN_SRC js
+  //导入默认值
+  import defaultMember from 'module-name'；
+  //导入模块里所有导出值
+  import * as name from 'module-name';
+  //导入模块里某一个导出值
+  import { member } from 'module-name';
+  //导入模块里某一个导出值，并重命名
+  import { member as alias} from 'module-name';
+#+END_SRC
+  
+** Class : v0.1.78
+**** JS 写法
+
+#+BEGIN_SRC js
+  class Rectangle{
+    constructor(height,width){
+       this.height = height;
+       this.width = width;
+    }
+    size(){
+      return this.height * this.width;
+    }
+  }
+  const rect1 = new Rectangle(10,200);
+  console.log(rect1.size());
+  //2000
+#+END_SRC
+
+**** 继承 extends
+#+BEGIN_SRC js
+  class Square extends Rectangle{
+    constructor(side){
+      super(side,side)
+    }
+  }
+  const square = new Square(10);
+  console.log(square.size());
+// 100
+#+END_SRC
+**** 静态属性: v0.1.79
+** String template
+ 用反引号(``),代替双引号和单引号。
+#+BEGIN_SRC
+  `string text`
+  `string text ${express} string text`
+#+END_SRC
+** 箭头函数
+#+BEGIN_SRC
+  (param1,param2,...,paramN)=>{ statements }
+  (param1,param2,...,paramN)=> expression
+  //相当于
+  (param1,param2,...,paramN)=> { return expression; }
+  
+  //单个参数，可忽略括号
+  (singleParam)=>{ statements }
+  //可写成
+  singleParam => { statements } 
+#+END_SRC
+
+* JSON : v0.1.98
+** JSON?
+ 一种表示数据结构的数据格式
+#+BEGIN_SRC js
+//simple
+{
+  "a": 1,
+  "b": "b"
+},
+//array
+{
+  "items":[
+    {
+      "id": 1,
+      "name": "jack" 
+    },
+    {
+      "id": 2,
+      "name": "bob" 
+    }
+  ]
+}
+#+END_SRC
+** 使用
+ - json字符串到JS Object
+ 
+#+BEGIN_SRC
+ const jsonStr = "{\"a":1,\"b\":2}";
+ const obj = JSON.parse(jsonStr); 
+ //输出对象
+ Object {a:1, b:2} 
+#+END_SRC
+
+- JS Object 到 json字符串
+
+#+BEGIN_SRC
+ const obj = {a:1,b:2}
+ const jsonString = JSON.stringify(obj);
+ //输出字符串
+ "{\"a":1,\"b\":2}"
+#+END_SRC
+
+* MVC : v0.1.82
+  用 MVC（Model View Controller 模型-视图-控制器）设计创建 Web 应用程序的模式
+
+  - Model（模型）
+#+BEGIN_SRC
+   表示应用程序处理数据逻辑的部分（比如数据库记录列表，网络请求获取数据）。
+#+END_SRC
+  - View（视图）
+#+BEGIN_SRC
+   显示数据的界面。
+#+END_SRC
+  - Controller（控制器）
+#+BEGIN_SRC
+   处理用户交互的模块，连接Modal和View。
+#+END_SRC
+
+* HTTP协议
+** 定义
+   http://host[":"port][abs_path]
+
+#+BEGIN_SRC
+  http://localhost:3000/api
+  http://www.abc.com/api
+#+END_SRC
+
+** method
+   - GET    获取资源
+   - POST   创建资源
+   - PUT    修改资源的所有内容
+   - DELTE  删除资源
+   - PATCH  部分更新资源
+** 消息(message)
+*** 例子 
+#+BEGIN_SRC sh
+ GET https://api.github.com/applications/grants
+
+> GET /applications/grants HTTP/1.1
+> Host: api.github.com
+> User-Agent: curl/7.52.1
+> Accept: */*
+> 
+< HTTP/1.1 401 Unauthorized
+< Date: Wed, 11 Oct 2017 09:00:38 GMT
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 101
+< Server: GitHub.com
+< Status: 401 Unauthorized
+< X-RateLimit-Limit: 60
+...
+< Access-Control-Expose-Headers: ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+< Access-Control-Allow-Origin: *
+< Content-Security-Policy: default-src 'none'
+< Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+...
+< 
+{
+  "message": "Requires authentication",
+  "documentation_url": "https://developer.github.com/v3"
+}
+
+#+END_SRC
+*** Request(请求）
+  - 请求行
+#+BEGIN_SRC 
+   GET /applications/grants HTTP/1.1
+#+END_SRC
+  - header
+#+BEGIN_SRC 
+   Host: api.github.com
+   User-Agent: curl/7.52.1
+   Accept: */*
+#+END_SRC
+  - body
+#+BEGIN_SRC 
+    POST，PUT用来上传数据  
+#+END_SRC
+ 
+*** Response(响应)
+ - 状态
+#+BEGIN_SRC 
+  HTTP/1.1 401 Unauthorized
+  401           状态码 http://tool.oschina.net/commons?type=5
+  Unauthorized  错误信息
+#+END_SRC
+ - header 
+#+BEGIN_SRC 
+< Date: Wed, 11 Oct 2017 09:00:38 GMT
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 101
+< Server: GitHub.com
+...
+#+END_SRC
+ - message body
+
+#+BEGIN_SRC
+{
+  "message": "Requires authentication",
+  "documentation_url": "https://developer.github.com/v3"
+}
+#+END_SRC   
+
+* Ajax  
+** 定义
+  Asynchronous JavaScript And XML
+ 
+  - 用XMLHttpRequest和服务器通讯
+  - 发送和接受的数据格式：JSON／XML/HTML／纯文本
+** 例子
+
+#+BEGIN_SRC javascript
+   var httpRequest = new XMLHttpRequest();
+   httpRequest.onreadystatechange = responseHandler;
+   const url = 'layouts'
+   httpRequest.open('GET',url);
+   httpRequest.send();
+
+   function responseHandler(){
+      if(httpRequest.readyState === XMLHttpRequest.DONE){
+          if(httpRequest.status === 200){
+             alert(httpRequest.responseText);
+          }else{
+             alert("some error");
+          }
+      }
+   } 
+#+END_SRC 
+* jquery
+  [[http://jquery.com]]
+ 
+* DOM 和 VDOM
+** DOM
+  HTML和XML的程序接口。
+** Virtual DOM
+  程序自己维护的和DOM结构一样的数据解构。
+  在需要只更新部分的DOM。

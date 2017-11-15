@@ -1,0 +1,308 @@
+#+Title: React
+
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+OPTIONS: ^:nil
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 1
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="React">
+#+REVEAL_POSTAMBLE: <p> Created by wuwei. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+
+* 简介
+** 前端框架
+** ReactJS和React Native
+ 
+#+BEGIN_SRC
+  ReactJS 基于浏览器api
+#+END_SRC
+
+#+BEGIN_SRC
+  React Native 基于本地（android，ios）api
+#+END_SRC
+
+* Hello World
+** 安装React
+
+#+BEGIN_SRC
+ npm install --save react react-dom
+#+END_SRC
+
+** bable插件
+
+- 安装
+#+BEGIN_SRC sh
+ npm install --save-dev babel-preset-react babel-preset-es2015
+#+END_SRC
+
+- 配置.babelrc
+
+#+BEGIN_SRC sh
+ {
+   "presets": ["es2015","react"]
+ }
+#+END_SRC
+
+** webpack
+#+BEGIN_SRC
+module.exports = {
+...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          'babel-loader'
+        ],
+        include: [
+            path.resolve(__dirname,'src')
+        ]
+      }
+    ]
+  }
+}
+#+END_SRC
+
+** 添加react代码
+*** index.html 
+#+BEGIN_SRC
+  <body>
+     <div id="root"></div>
+     ... 
+  </body>
+#+END_SRC
+
+** index.js
+- 文件头部
+#+BEGIN_SRC
+ import React from 'react';
+ import ReactDOM from 'react-dom';
+#+END_SRC
+- 文件内容
+#+BEGIN_SRC
+function hello () {
+  return <h1>Hello,world</h1>;
+}
+const root = hello();
+ReactDOM.render(
+  root,
+  document.getElementById('root')
+);
+#+END_SRC
+
+* JSX 
+** 基本语法 : v0.1.113
+
+#+BEGIN_SRC
+ const element = <h1>Hello,world</h1>;
+#+END_SRC
+
+** 可以内嵌表达式 : v0.1.114,v0.1.115
+#+BEGIN_SRC
+  const item_href = 'src/html_element/html_element_category.html';
+  const item_text = 'HTML元素分类'
+  const nav_item = <p><a href={item_href}>{item_text}</a></p>
+#+END_SRC
+
+** class和className
+** onclick和onClick
+
+#+BEGIN_SRC
+  //HTML字符串
+  const element_raw_html = '<h1 class='greeting'>Hello</h1>';
+  //JSX
+  const element_jsx = <h1 className='greeting'>Hello</h1>;
+#+END_SRC
+
+* React Component
+** Functional Components : v0.1.116
+#+BEGIN_SRC
+  function NavSideBar(props){
+    return <nav>{props.items}</nav>
+  }
+#+END_SRC
+** Class Components : v0.1.117
+#+BEGIN_SRC
+  class NavSideBar extends React.Component{
+    render(){
+       return <nav>{this.props.items}</nav>
+    }
+  }
+#+END_SRC
+
+** 事件处理 : v0.1.119
+- HTML事件处理
+#+BEGIN_SRC
+ <a href="#" onclick="console.log('clicked'); return false">Click me</a>
+#+END_SRC
+
+- JSX
+#+BEGIN_SRC
+function ActionLink(){
+  function handleClick(e){
+    e.preventDefault();//相当HTML的 return false
+    console.log('clicked');
+  }
+  return (
+    <a href="#" onClick={handleClick}> //handleClick not handleClick()
+       Click me
+    </a>
+  )
+}
+#+END_SRC
+
+** props
+  React component之前传递参数
+** 自定义组件首字符必须大写
+#+BEGIN_SRC
+ //right
+ <MyComponent />
+ //error
+ <myComponent />
+#+END_SRC 
+** {} 和 ()
+#+BEGIN_SRC
+  const component = ()=>{
+     return <MyComponent />
+  }
+  等价
+  const component = ()=>（
+     <MyComponent />
+  )
+#+END_SRC
+
+
+* React-Router 4.0
+** 安装
+#+BEGIN_SRC
+  npm install --save-dev react-router-dom
+#+END_SRC
+** Router
+** Link
+  相当于href
+** Route 
+  定义路径和React Component的关系
+** 父子关系的Route : v0.1.121,v0.1.122
+ App和其他页面的关系
+
+* State
+** 定义
+#+BEGIN_SRC
+  class MyComponent extends React.Component{
+     constructor(props){
+       super(props);
+       this.state={
+         result: ""
+       }
+     }
+  }
+#+END_SRC
+
+** 访问
+
+#+BEGIN_SRC
+  //read
+  const value = this.state.result;
+  //write
+  this.setState({result: '1'})
+#+END_SRC
+
+** 更新State，就更新组件界面
+** State，Prop异步更新
+   之前的状态不能直接用来计算后面的状态
+
+#+BEGIN_SRC
+  //wrong
+  this.setState({
+    result: this.state.result + this.props.some
+  })
+  //right
+  this.setState({prevState,props)=>({
+    result: prevState.result + this.props.some
+  })
+#+END_SRC
+
+** State只在Component内部有效
+
+* Storybook@3
+
+#+BEGIN_SRC
+  npm i -g @storybook/cli
+  getstorybook
+#+END_SRC
+
+#+BEGIN_SRC
+  npm  i -D babel-preset-es2015
+#+END_SRC
+
+* PropTypes类型检查
+ [[https://reactjs.org/docs/typechecking-with-proptypes.html]]
+
+#+BEGIN_SRC
+MyComponent.propTypes = {
+  oArray: PropTypes.array,
+  ....
+}
+#+END_SRC
+* 生命周期
+** Mounting
+#+BEGIN_SRC :javascript
+  constructor()
+  componentWillMount()  
+  render()
+  compnentDidMount()  //网络请求，加载数据
+#+END_SRC
+
+** Updating
+#+BEGIN_SRC :javascript
+  componentWillReceiveProps()   //组件收到新的props之前，根据props变化设置state
+  shouldComponentUpdate()       //返回True，组件是否更新，false，组件不更新，将被隐藏
+  componentWillUpdate()         //不要设置state
+  render()
+  componentDidUpdate()          //调用网络请求。props没改化，不用调用网络请求 
+#+END_SRC
+
+** ComponentWillUnmount
+  DOM卸载之前.释放资源.
+#+BEGIN_SRC 
+  比如: 停止定时器，取消网络请求
+#+END_SRC
+
+* Create React App
+  [[https://github.com/facebookincubator/create-react-app]]
+
+** 安装
+
+#+BEGIN_SRC
+  npm install -g create-react-app
+#+END_SRC
+
+** 创建App
+#+BEGIN_SRC
+  create-react-app ~/myApp
+#+END_SRC
+
+** 目录和文件介绍
+ - 代码结构
+ - 内嵌CSS
+ - Autoprefixer
+ 
+* Redux
+ JavaScript的可预测的状态容器
+
+** 状态
+ 就是数据
+
+** 安装
+#+BEGIN_SRC
+  npm install --save redux redux-redux redux-devtools
+#+END_SRC
+
+* Hexo
+ [[http://hexo.io]]
