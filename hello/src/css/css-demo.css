@@ -1,0 +1,69 @@
+#css-box-demo{
+    font-size: 64px;/* 10个像素 */
+    background: gray;
+    width: 600px;
+    height: 600px;
+    border: 10px dotted black;
+    margin:100px 100px 100px 200px;
+}
+#css-box-demo div{
+    background: yellow;
+    width:  400px;
+    height: 400px;
+    border: 2px solid black;
+    margin: 50px auto;
+    padding: 50px 0px;
+}
+.css-demo-unit{
+    background: lightgray;
+    border: 2px solid black;
+    font-size: 32px;
+}
+#css-demo-unit-px{
+    margin: 10px 50px;
+}
+#css-demo-unit-em{
+    margin: 10px 50em;
+}
+#css-demo-unit-rem{
+    margin: 10px 50rem;
+}
+#css-demo-unit-auto{
+    margin: auto;
+}
+#css-demo-unit-percent{
+    margin: 0 20%;
+}
+.cssdemo__two-column div:nth-of-type(1){
+    width:50%;
+    float:left;
+}
+.cssdemo__two-column div:nth-of-type(2){
+    width:50%;
+    float:right;
+}
+.cssdemo_h2,.cssdemo__h3{
+    clear:both;
+}
+.cssdemo__three-column div:nth-of-type(1){
+    width:30%;
+    float:left;
+
+}
+.cssdemo__three-column div:nth-of-type(2){
+    width:30%;
+    float:right;
+    margin-left: 4%
+}
+.cssdemo__three-column div:nth-of-type(3){
+    width:30%;
+    float:right;
+}
+.cssdemo__box{
+    display: flex;
+}
+.cssdemo__box--vertical{
+    display: flex;
+    flex-flow: column;
+}
+

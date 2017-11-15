@@ -1,0 +1,17 @@
+#mul-result{
+    border:2px solid black;
+    margin: 0 0 1rem 0;
+}
+ul{
+    margin: 0px;
+    padding:0px;
+}
+ul li{
+    list-style-type:none;
+    paddng:0;
+}
+#multiplier{
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}

@@ -1,4 +1,4 @@
-import Math from '../math/math.js';
+import Math from 'math/math';
 
 class Input {
   constructor ({clearCallback}) { // 构造函数

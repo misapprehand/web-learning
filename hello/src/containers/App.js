@@ -11,6 +11,8 @@ import SideBar from 'containers/sideBar';
 import JsBasicContainer from 'containers/JsBasicContainer';
 import CalcContainer from 'containers/CalcContainer';
 
+import 'css/main.css';
+
 const routes = [
   { path: '/jsBasic',
     component: JsBasicContainer

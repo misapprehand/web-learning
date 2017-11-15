@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 function requestThemes ({onSuccess, onFail}) {
   $.ajax({
     url: 'http://localhost:4000/layouts',
